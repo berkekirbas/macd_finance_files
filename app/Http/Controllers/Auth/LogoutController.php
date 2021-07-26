@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Cookie;
 
 class LogoutController extends Controller
 {
@@ -12,12 +13,12 @@ class LogoutController extends Controller
     *
     * @return \Illuminate\Http\JsonResponse
     */
-    public function logout(Request $request) {
-
-		$request->user()->token()->revoke();
-
-		$message['success'] = 'Logout the system';
-
-		return response()->json(['message' => $message, 'code' => 200]);
-	}
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+        $cookie = Cookie::forget('Macd_Finance_Auth_Token');
+        return response()->json([
+            'message' => 'Logout Successfully'
+        ])->withCookie($cookie);
+    }
 }

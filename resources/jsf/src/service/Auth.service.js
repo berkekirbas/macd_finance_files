@@ -1,27 +1,19 @@
 import axios from "axios";
 import { BASE_URL } from "../Config";
 
-const authControl = async (token) => {
+const authControlAndUserInfo = async () => {
     const response = await axios
         .get(`${BASE_URL}/api/v1/auth/me`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
+            withCredentials: true,
         })
-        .then(() => true)
+        .then((response) => response.data)
         .catch(() => false);
     return response;
 };
 
-const isAuthenticated = async () => {
-    const token = localStorage.getItem("auth_token");
-
-    if (token == undefined) {
-        return false;
-    }
-
-    const res = await authControl(token);
-    return res;
+const isAuthenticatedAndGetUserInfo = async () => {
+    const data = await authControlAndUserInfo();
+    return data;
 };
 
-export { isAuthenticated };
+export { isAuthenticatedAndGetUserInfo };

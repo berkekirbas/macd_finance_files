@@ -4,8 +4,6 @@ import { Redirect, Route } from "react-router-dom";
 const Home = lazy(() => import("../../pages/Home/Home"));
 
 const HomeProtectedRoute = ({ ...restOfProps }) => {
-    const token = localStorage.getItem("auth_token");
-
     return (
         <Route
             {...restOfProps}

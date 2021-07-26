@@ -33,15 +33,13 @@ const Login = (props) => {
         // ! login request
 
         axios
-            .post(`${BASE_URL}/api/v1/auth/login`, data)
+            .post(`${BASE_URL}/api/v1/auth/login`, data, {
+                withCredentials: true,
+            })
             .then((response) => {
-                if (response.data.message.token == undefined) {
+                if (response.data.token == undefined) {
                     console.log(response.data.message);
                 } else {
-                    localStorage.setItem(
-                        "auth_token",
-                        response.data.message.token
-                    );
                     history.push("/");
                 }
             })

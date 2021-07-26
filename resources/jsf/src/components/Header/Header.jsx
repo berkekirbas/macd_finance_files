@@ -1,6 +1,23 @@
+import axios from "axios";
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { BASE_URL } from "../../Config";
 
 const Header = () => {
+    const history = useHistory();
+
+    const signOut = () => {
+        axios
+            .post(`${BASE_URL}/api/v1/auth/logout`, null, {
+                withCredentials: true,
+            })
+            .then(() => history.push("/login"))
+            .catch((err) => {
+                console.log(err);
+                history.push("/login");
+            });
+    };
+
     return (
         <header id="header">
             <nav className="navbar navbar-default navbar-fixed-top menu">
@@ -135,7 +152,12 @@ const Header = () => {
                             </li>
 
                             <li className="dropdown">
-                                <a href="contact.html">Sign Out</a>
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={signOut}
+                                >
+                                    Sign Out
+                                </button>
                             </li>
                         </ul>
 

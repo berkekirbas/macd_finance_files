@@ -1,17 +1,17 @@
+//! gerekli kütüphaneler
 import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 
+// ! gerekli componentler
 import Header from "../../components/Header/Header";
 import Profile from "../../components/Profile/Profile";
 import PostCreateBox from "../../components/PostCreateBox/PostCreateBox";
 import Post from "../../components/Post/Post";
 import TopList from "../../components/TopList/TopList";
-
 import Loader from "../../components/loader/Loader";
 
-import { isAuthenticated } from "../../service/Auth.service";
-
-import { BASE_URL } from "../../Config";
+//! gerekli service fonksiyonu
+import { isAuthenticatedAndGetUserInfo } from "../../service/Auth.service";
 
 const Home = () => {
     const [isAuth, setAuth] = useState(null);
@@ -19,21 +19,16 @@ const Home = () => {
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        async function control() {
-            setAuth(await isAuthenticated());
+        async function authControlAndGetUserInfo() {
+            let data = await isAuthenticatedAndGetUserInfo();
+            if (data.message.success) {
+                setAuth(true);
+                setUser(data.message.user);
+            } else {
+                setAuth(false);
+            }
         }
-        control();
-    });
-
-    useEffect(() => {
-        const token = localStorage.getItem("auth_token");
-        axios
-            .get(`${BASE_URL}/api/v1/auth/me`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-            .then((res) => setUser(res.data.message.user));
+        authControlAndGetUserInfo();
     }, []);
 
     return isAuth == null ? (
@@ -48,9 +43,7 @@ const Home = () => {
                         <div className="col-md-7">
                             {user.isTrader == 1 ? (
                                 <PostCreateBox avatar={user.avatar} />
-                            ) : (
-                                <></>
-                            )}
+                            ) : null}
                             <Post />
                         </div>
                         <TopList />

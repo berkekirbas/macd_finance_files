@@ -23,8 +23,8 @@
   <script charset="utf8" src="{{ mix('/jsf/vendor.js') }}"></script>
   <script charset="utf8" src="{{ mix('/jsf/app.js') }}"></script>
 
-  <script async charset="utf8" src="{{ asset('/assets/js/jquery-3.1.1.min.js') }}"></script>
-  <script async charset="utf8" src="{{ asset('/assets/js/bootstrap.min.js') }}"></script>
+  <script charset="utf8" src="{{ asset('/assets/js/jquery-3.1.1.min.js') }}"></script>
+  <script charset="utf8" src="{{ asset('/assets/js/bootstrap.min.js') }}"></script>
 
 
 </body>

@@ -86,11 +86,12 @@ var Login = function Login(props) {
       password: state.password
     }; // ! login request
 
-    axios.post("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/login"), data).then(function (response) {
-      if (response.data.message.token == undefined) {
+    axios.post("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/login"), data, {
+      withCredentials: true
+    }).then(function (response) {
+      if (response.data.token == undefined) {
         console.log(response.data.message);
       } else {
-        localStorage.setItem("auth_token", response.data.message.token);
         history.push("/");
       }
     })["catch"](function (error) {

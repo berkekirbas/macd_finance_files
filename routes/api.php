@@ -18,6 +18,7 @@ Route::group([
 ], function () {
 
     Route::post('login', 'App\Http\Controllers\Auth\LoginController@login');
+    
     Route::post('register', 'App\Http\Controllers\Auth\RegisterController@register');
     
     Route::get('email/verify/{token}', 'App\Http\Controllers\Auth\MailVerifyController@verify')->name('verification.verify');
