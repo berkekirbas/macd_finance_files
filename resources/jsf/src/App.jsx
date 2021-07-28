@@ -1,22 +1,21 @@
 //! Required Imports
-import React, { Suspense, lazy } from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { Suspense } from "react";
+import { Switch } from "react-router-dom";
 
 //! Components
 import Spinner from "./components/loader/Loader";
 
-//! Pages
-const Home = lazy(() => import("./pages/Home/Home"));
-const Login = lazy(() => import("./pages/Login/Login"));
-const Register = lazy(() => import("./pages/Register/Register"));
+import HomeProtectedRoute from "./utils/protected/HomeProtectedRoute";
+import LoginGuestController from "./utils/guest/LoginGuestController";
+import RegisterGuestController from "./utils/guest/RegisterGuestController";
 
 function App() {
     return (
         <Suspense fallback={<Spinner />}>
             <Switch>
-                <Route exact path="/" render={() => <Home />} />
-                <Route exact path="/login" render={() => <Login />} />
-                <Route exact path="/register" render={() => <Register />} />
+                <HomeProtectedRoute exact path="/" />
+                <LoginGuestController exact path="/login" />
+                <RegisterGuestController exact path="/register" />
             </Switch>
         </Suspense>
     );

@@ -1,6 +1,6 @@
 //! gerekli kütüphaneler
 import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 // ! gerekli componentler
 import Header from "../../components/Header/Header";
@@ -21,14 +21,26 @@ const Home = () => {
     useEffect(() => {
         async function authControlAndGetUserInfo() {
             let data = await isAuthenticatedAndGetUserInfo();
-            if (data.message.success) {
-                setAuth(true);
-                setUser(data.message.user);
-            } else {
+            if (!data.code) {
+                localStorage.removeItem("auth_token_s2");
                 setAuth(false);
+                setUser(null);
+                return;
+            } else if (data.code === 200) {
+                setUser(data.message.user);
+                setAuth(true);
+            } else {
+                localStorage.removeItem("auth_token_s2");
+                setUser(null);
+                setAuth(false);
+                return;
             }
         }
         authControlAndGetUserInfo();
+        return () => {
+            setUser(null);
+            setAuth(false);
+        };
     }, []);
 
     return isAuth == null ? (

@@ -11,9 +11,13 @@ const Header = () => {
             .post(`${BASE_URL}/api/v1/auth/logout`, null, {
                 withCredentials: true,
             })
-            .then(() => history.push("/login"))
+            .then(() => {
+                localStorage.removeItem("auth_control_s2");
+                history.push("/login");
+            })
             .catch((err) => {
                 console.log(err);
+                localStorage.removeItem("auth_control_s2");
                 history.push("/login");
             });
     };
@@ -59,16 +63,11 @@ const Header = () => {
                                     aria-haspopup="true"
                                     aria-expanded="false"
                                 >
-                                    Newsfeed{" "}
+                                    Navigation{" "}
                                 </a>
                                 <ul className="dropdown-menu newsfeed-home">
                                     <li>
-                                        <a href="newsfeed.html">Newsfeed</a>
-                                    </li>
-                                    <li>
-                                        <a href="newsfeed-people-nearby.html">
-                                            Poeple Nearly
-                                        </a>
+                                        <Link to="/">Home</Link>
                                     </li>
                                     <li>
                                         <a href="newsfeed-friends.html">
@@ -76,18 +75,8 @@ const Header = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="newsfeed-messages.html">
-                                            Chatroom
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="newsfeed-images.html">
-                                            Images
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="newsfeed-videos.html">
-                                            Videos
+                                            Messages
                                         </a>
                                     </li>
                                 </ul>
@@ -102,7 +91,7 @@ const Header = () => {
                                     aria-haspopup="true"
                                     aria-expanded="false"
                                 >
-                                    Timeline{" "}
+                                    Settings{" "}
                                 </a>
                                 <ul className="dropdown-menu login">
                                     <li>
@@ -152,12 +141,12 @@ const Header = () => {
                             </li>
 
                             <li className="dropdown">
-                                <button
+                                <a
                                     className="btn btn-primary"
                                     onClick={signOut}
                                 >
                                     Sign Out
-                                </button>
+                                </a>
                             </li>
                         </ul>
 

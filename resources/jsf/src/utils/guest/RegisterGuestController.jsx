@@ -1,18 +1,18 @@
 import React, { lazy } from "react";
 import { Redirect, Route } from "react-router-dom";
 
-const Home = lazy(() => import("../../pages/Home/Home"));
+const Register = lazy(() => import("../../pages/Register/Register"));
 
-const HomeProtectedRoute = ({ ...restOfProps }) => {
+const RegisterGuestController = ({ ...restOfProps }) => {
     const authControlS2 = localStorage.getItem("auth_control_s2");
     return (
         <Route
             {...restOfProps}
             render={(props) =>
-                authControlS2 ? <Home {...props} /> : <Redirect to="/login" />
+                authControlS2 ? <Redirect to="/" /> : <Register {...props} />
             }
         />
     );
 };
 
-export default HomeProtectedRoute;
+export default RegisterGuestController;

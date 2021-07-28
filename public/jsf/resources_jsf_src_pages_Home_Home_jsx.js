@@ -57,9 +57,11 @@ var Header = function Header() {
     axios__WEBPACK_IMPORTED_MODULE_0___default().post("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/logout"), null, {
       withCredentials: true
     }).then(function () {
-      return history.push("/login");
+      localStorage.removeItem("auth_control_s2");
+      history.push("/login");
     })["catch"](function (err) {
       console.log(err);
+      localStorage.removeItem("auth_control_s2");
       history.push("/login");
     });
   };
@@ -738,14 +740,34 @@ var Home = function Home() {
               case 2:
                 data = _context.sent;
 
-                if (data.message.success) {
-                  setAuth(true);
-                  setUser(data.message.user);
-                } else {
-                  setAuth(false);
+                if (data.code) {
+                  _context.next = 10;
+                  break;
                 }
 
-              case 4:
+                localStorage.removeItem("auth_token_s2");
+                setAuth(false);
+                setUser(null);
+                return _context.abrupt("return");
+
+              case 10:
+                if (!(data.code === 200)) {
+                  _context.next = 15;
+                  break;
+                }
+
+                setUser(data.message.user);
+                setAuth(true);
+                _context.next = 19;
+                break;
+
+              case 15:
+                localStorage.removeItem("auth_token_s2");
+                setUser(null);
+                setAuth(false);
+                return _context.abrupt("return");
+
+              case 19:
               case "end":
                 return _context.stop();
             }
@@ -756,6 +778,10 @@ var Home = function Home() {
     }
 
     authControlAndGetUserInfo();
+    return function () {
+      setUser(null);
+      setAuth(false);
+    };
   }, []);
   return isAuth == null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_loader_Loader__WEBPACK_IMPORTED_MODULE_7__.default, {}) : isAuth ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Header_Header__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {

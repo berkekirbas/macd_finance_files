@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import "./login.css";
 
 import { BASE_URL } from "../../Config";
+import { randomString } from "../../utils/randomStringGenerator";
 
 const Login = (props) => {
     const history = useHistory();
@@ -40,6 +41,7 @@ const Login = (props) => {
                 if (response.data.token == undefined) {
                     console.log(response.data.message);
                 } else {
+                    localStorage.setItem("auth_control_s2", randomString(50));
                     history.push("/");
                 }
             })
