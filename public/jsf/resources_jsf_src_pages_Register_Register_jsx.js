@@ -1,20 +1,5 @@
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_jsf_src_pages_Register_Register_jsx"],{
 
-/***/ "./resources/jsf/src/Config.js":
-/*!*************************************!*\
-  !*** ./resources/jsf/src/Config.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BASE_URL": () => (/* binding */ BASE_URL)
-/* harmony export */ });
-var BASE_URL = "http://localhost:8000";
-
-/***/ }),
-
 /***/ "./resources/jsf/src/pages/Register/Register.jsx":
 /*!*******************************************************!*\
   !*** ./resources/jsf/src/pages/Register/Register.jsx ***!

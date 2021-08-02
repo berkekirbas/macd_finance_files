@@ -1,5 +1,7 @@
 import axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { useHistory } from "react-router-dom";
 import { BASE_URL } from "../../Config";
 
@@ -16,7 +18,6 @@ const Header = () => {
                 history.push("/login");
             })
             .catch((err) => {
-                console.log(err);
                 localStorage.removeItem("auth_control_s2");
                 history.push("/login");
             });
@@ -95,39 +96,6 @@ const Header = () => {
                                 </a>
                                 <ul className="dropdown-menu login">
                                     <li>
-                                        <a href="timeline.html">Timeline</a>
-                                    </li>
-                                    <li>
-                                        <a href="timeline-about.html">
-                                            Timeline About
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="timeline-album.html">
-                                            Timeline Album
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="timeline-friends.html">
-                                            Timeline Friends
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="edit-profile-basic.html">
-                                            Edit: Basic Info
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="edit-profile-work-edu.html">
-                                            Edit: Work
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="edit-profile-interests.html">
-                                            Edit: Interests
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="edit-profile-settings.html">
                                             Account Settings
                                         </a>
@@ -141,11 +109,8 @@ const Header = () => {
                             </li>
 
                             <li className="dropdown">
-                                <a
-                                    className="btn btn-primary"
-                                    onClick={signOut}
-                                >
-                                    Sign Out
+                                <a style={{ color: "#27AAE1" }}>
+                                    <button onClick={signOut}>Sign Out</button>
                                 </a>
                             </li>
                         </ul>

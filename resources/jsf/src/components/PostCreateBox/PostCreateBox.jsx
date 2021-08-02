@@ -1,17 +1,24 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+
+import { userSelector } from "../../store/slice/userSlice";
+
 const PostCreateBox = (props) => {
+    const { user } = useSelector(userSelector);
+
     return (
         <div className="create-post">
             <div className="row">
                 <div className="col-md-7 col-sm-7">
                     <div className="form-group">
                         <img
-                            src={`images/avatar/${props.avatar}`}
+                            src={`images/avatar/${user.avatar}`}
                             alt=""
                             className="profile-photo-md"
                         />
                         <textarea
+                            style={{ resize: "none" }}
                             name="texts"
                             id="exampleTextarea"
                             cols="30"

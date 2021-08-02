@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->default('avatar.png');
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('isTrader')->default(false);
+            $table->integer('followers')->default(0);
+            $table->integer('following')->default(0);
             $table->string('password');
             $table->rememberToken();
             $table->softDeletes();

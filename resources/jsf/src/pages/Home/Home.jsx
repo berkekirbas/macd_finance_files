@@ -1,6 +1,6 @@
 //! gerekli kütüphaneler
-import React, { useEffect, useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Redirect } from "react-router-dom";
 
 // ! gerekli componentler
 import Header from "../../components/Header/Header";
@@ -10,39 +10,50 @@ import Post from "../../components/Post/Post";
 import TopList from "../../components/TopList/TopList";
 import Loader from "../../components/loader/Loader";
 
-//! gerekli service fonksiyonu
-import { isAuthenticatedAndGetUserInfo } from "../../service/Auth.service";
+import { useDispatch, useSelector } from "react-redux";
+
+import { userSelector, fetchUserInfo } from "../../store/slice/userSlice";
+import { USER_TYPE } from "../../Config";
 
 const Home = () => {
-    const [isAuth, setAuth] = useState(null);
-
-    const [user, setUser] = useState({});
+    const dispatch = useDispatch();
+    const { user, loading, hasErrors } = useSelector(userSelector);
 
     useEffect(() => {
-        async function authControlAndGetUserInfo() {
-            let data = await isAuthenticatedAndGetUserInfo();
-            if (!data.code) {
-                localStorage.removeItem("auth_token_s2");
-                setAuth(false);
-                setUser(null);
-                return;
-            } else if (data.code === 200) {
-                setUser(data.message.user);
-                setAuth(true);
-            } else {
-                localStorage.removeItem("auth_token_s2");
-                setUser(null);
-                setAuth(false);
-                return;
-            }
-        }
-        authControlAndGetUserInfo();
-        return () => {
-            setUser(null);
-            setAuth(false);
-        };
-    }, []);
+        dispatch(fetchUserInfo());
+    }, [dispatch]);
 
+    const render = () => {
+        if (loading) return <Loader />;
+        if (hasErrors) {
+            localStorage.removeItem("auth_control_s2");
+            return <Redirect to="/login" />;
+        }
+
+        return (
+            <>
+                <Header />
+                <div id="page-contents">
+                    <div className="container">
+                        <div className="row">
+                            <Profile />
+                            <div className="col-md-7">
+                                {user.isTrader === USER_TYPE.TRADER ? (
+                                    <PostCreateBox />
+                                ) : null}
+                                <Post />
+                            </div>
+                            <TopList />
+                        </div>
+                    </div>
+                </div>
+            </>
+        );
+    };
+
+    return <>{render()}</>;
+
+    /*
     return isAuth == null ? (
         <Loader />
     ) : isAuth ? (
@@ -65,7 +76,7 @@ const Home = () => {
         </>
     ) : (
         <Redirect to="/login" />
-    );
+    );*/
 };
 
 export default Home;
