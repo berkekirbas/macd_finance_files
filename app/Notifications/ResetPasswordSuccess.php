@@ -29,6 +29,6 @@ class ResetPasswordSuccess extends Notification {
 	
 	public function toMail($notifiable) {
 		return (new MailMessage)
-			->line('Şifreniz Başarıyla Değiştirilmiştir');
+			->line('Your password successfully changed.');
 	}
 }

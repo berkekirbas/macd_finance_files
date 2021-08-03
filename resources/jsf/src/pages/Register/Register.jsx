@@ -1,44 +1,44 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import swal from "sweetalert";
 
-import "./register.css"
+import "./register.css";
 
 import { BASE_URL } from "../../Config";
 
 const Register = (props) => {
     const history = useHistory();
 
-    const [state, setState] = useState({
-        name: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
-        errors: {},
-    });
-
-    const handleChange = (e) => {
-        const { id, value } = e.target;
-        setState((prevState) => ({
-            ...prevState,
-            [id]: value,
-        }));
-    };
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [nickname, setNickname] = useState("");
+    const [password, setPassword] = useState("");
+    const [password_confirmation, setPasswordConfirmation] = useState("");
+    const [avatar, setAvatar] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (state.password === state.password_confirmation) {
+
+        if (password === password_confirmation) {
             // ! data
-            const data = {
-                name: state.name,
-                email: state.email,
-                password: state.password,
-                password_confirmation: state.password_confirmation,
-            };
+            const formData = new FormData();
+            formData.append("name", name);
+            formData.append("email", email);
+            formData.append("nickname", nickname);
+            formData.append("password", password);
+            formData.append("password_confirmation", password_confirmation);
+            formData.append("avatar", avatar);
 
             // ! register request
             axios
-                .post(`${BASE_URL}/api/v1/auth/register`, data)
+                .post(`${BASE_URL}/api/v1/auth/register`, formData)
                 .then(() => {
+                    swal({
+                        title: "Success",
+                        text: `${data.message.success}`,
+                        icon: "success",
+                        button: "Ok",
+                    });
                     history.push("/login");
                 })
                 .catch((error) => error);
@@ -84,8 +84,8 @@ const Register = (props) => {
                                 id="name"
                                 className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
                                 required
-                                value={state.name}
-                                onChange={handleChange}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                             />
                         </div>
                         <div className="mb-6 pt-3 rounded bg-gray-200">
@@ -100,8 +100,8 @@ const Register = (props) => {
                                 id="nickname"
                                 className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
                                 required
-                                /*value={state.email}
-                                onChange={handleChange}*/
+                                value={nickname}
+                                onChange={(e) => setNickname(e.target.value)}
                             />
                         </div>
                         <div className="mb-6 pt-3 rounded bg-gray-200">
@@ -116,8 +116,8 @@ const Register = (props) => {
                                 id="email"
                                 className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
                                 required
-                                value={state.email}
-                                onChange={handleChange}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="mb-6 pt-3 rounded bg-gray-200">
@@ -132,8 +132,8 @@ const Register = (props) => {
                                 id="password"
                                 className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
                                 required
-                                value={state.password}
-                                onChange={handleChange}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
 
@@ -149,8 +149,23 @@ const Register = (props) => {
                                 id="password_confirmation"
                                 className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
                                 required
-                                value={state.password_confirmation}
-                                onChange={handleChange}
+                                value={password_confirmation}
+                                onChange={(e) =>
+                                    setPasswordConfirmation(e.target.value)
+                                }
+                            />
+                        </div>
+
+                        <div className="mb-6 pt-3 rounded bg-gray-200">
+                            <label htmlFor="formFile" className="form-label">
+                                Profile Picture
+                            </label>
+                            <input
+                                type="file"
+                                name="image"
+                                onChange={(e) => setAvatar(e.target.files[0])}
+                                className="form-control"
+                                id="image"
                             />
                         </div>
 

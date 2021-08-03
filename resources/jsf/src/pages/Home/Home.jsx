@@ -52,31 +52,6 @@ const Home = () => {
     };
 
     return <>{render()}</>;
-
-    /*
-    return isAuth == null ? (
-        <Loader />
-    ) : isAuth ? (
-        <>
-            <Header />
-            <div id="page-contents">
-                <div className="container">
-                    <div className="row">
-                        <Profile user={user} />
-                        <div className="col-md-7">
-                            {user.isTrader == 1 ? (
-                                <PostCreateBox avatar={user.avatar} />
-                            ) : null}
-                            <Post />
-                        </div>
-                        <TopList />
-                    </div>
-                </div>
-            </div>
-        </>
-    ) : (
-        <Redirect to="/login" />
-    );*/
 };
 
 export default Home;

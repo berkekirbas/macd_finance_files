@@ -71,14 +71,10 @@ const Header = () => {
                                         <Link to="/">Home</Link>
                                     </li>
                                     <li>
-                                        <a href="newsfeed-friends.html">
-                                            My friends
-                                        </a>
+                                        <Link to="/friends">My friends</Link>
                                     </li>
                                     <li>
-                                        <a href="newsfeed-videos.html">
-                                            Messages
-                                        </a>
+                                        <Link to="/messages">Messages</Link>
                                     </li>
                                 </ul>
                             </li>
@@ -98,11 +94,6 @@ const Header = () => {
                                     <li>
                                         <a href="edit-profile-settings.html">
                                             Account Settings
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="edit-profile-password.html">
-                                            Change Password
                                         </a>
                                     </li>
                                 </ul>
