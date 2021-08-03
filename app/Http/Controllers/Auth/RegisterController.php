@@ -27,7 +27,6 @@ class RegisterController extends Controller
             'nickname' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'avatar' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules);
