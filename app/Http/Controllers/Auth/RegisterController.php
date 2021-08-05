@@ -27,6 +27,7 @@ class RegisterController extends Controller
             'nickname' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -40,7 +41,6 @@ class RegisterController extends Controller
         {
             $file      = $request->file('avatar');
             $filename  = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
             $picture   = date('His').'-'.$filename;
             //move image to public/images/avatar folder
             $file->move(public_path('images/avatar'), $picture);
