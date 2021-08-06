@@ -20,10 +20,7 @@ Route::group([
     'prefix' => 'v1/public'
 ], function()
 {
-    Route::get('allPosts', function(){
-        $posts = Post::with('user:id,name,nickname')->get();
-        return response()->json(['posts' => $posts, 'code' => 200]);
-    });
+    Route::get('getAllPost', 'App\Http\Controllers\Util\getAllPosts@posts');
 });
 
 Route::group([
@@ -40,7 +37,7 @@ Route::group([
     Route::group(['middleware' => 'auth:api'], function () {
 		Route::post('logout', 'App\Http\Controllers\Auth\LogoutController@logout');
 		Route::get('me', 'App\Http\Controllers\Auth\meController@me');
-        Route::get('sharePost', 'App\Http\Controllers\Util\sharePost@sharePost');
+        Route::post('sharePost', 'App\Http\Controllers\Util\sharePost@sharePost');
 	});
 });
 

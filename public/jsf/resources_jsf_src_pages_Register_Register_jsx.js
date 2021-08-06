@@ -86,12 +86,6 @@ var Register = function Register(props) {
       formData.append("avatar", avatar); // ! register request
 
       axios.post("".concat(_Config__WEBPACK_IMPORTED_MODULE_3__.BASE_URL, "/api/v1/auth/register"), formData).then(function () {
-        sweetalert__WEBPACK_IMPORTED_MODULE_1___default()({
-          title: "Success",
-          text: "".concat(data.message.success),
-          icon: "success",
-          button: "Ok"
-        });
         history.push("/login");
       })["catch"](function (error) {
         return error;

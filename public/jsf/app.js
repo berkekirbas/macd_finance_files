@@ -5254,6 +5254,112 @@ function Spinner() {
 
 /***/ }),
 
+/***/ "./resources/jsf/src/store/slice/postSlice.js":
+/*!****************************************************!*\
+  !*** ./resources/jsf/src/store/slice/postSlice.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "postSelector": () => (/* binding */ postSelector),
+/* harmony export */   "getPosts": () => (/* binding */ getPosts),
+/* harmony export */   "getPostsSuccess": () => (/* binding */ getPostsSuccess),
+/* harmony export */   "getPostsFail": () => (/* binding */ getPostsFail),
+/* harmony export */   "addPost": () => (/* binding */ addPost),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "fetchPosts": () => (/* binding */ fetchPosts)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Config */ "./resources/jsf/src/Config.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//! slice oluşturma metodumuz
+
+
+ // başlangıç state imiz
+
+var initialState = {
+  loading: false,
+  hasErrors: false,
+  posts: []
+};
+var postSelector = function postSelector(state) {
+  return state.posts;
+}; // güncel değerini almak için
+
+var userSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.createSlice)({
+  name: "posts",
+  initialState: initialState,
+  reducers: {
+    addPost: function addPost(state, _ref) {
+      var payload = _ref.payload;
+      state.posts.push({
+        payload: payload
+      });
+    },
+    getPosts: function getPosts(state) {
+      state.loading = true;
+    },
+    getPostsSuccess: function getPostsSuccess(state, _ref2) {
+      var payload = _ref2.payload;
+      state.posts = payload;
+      state.loading = false;
+      state.hasErrors = false;
+    },
+    getPostsFail: function getPostsFail(state) {
+      state.hasErrors = true;
+      state.loading = false;
+    }
+  }
+});
+var _userSlice$actions = userSlice.actions,
+    getPosts = _userSlice$actions.getPosts,
+    getPostsSuccess = _userSlice$actions.getPostsSuccess,
+    getPostsFail = _userSlice$actions.getPostsFail,
+    addPost = _userSlice$actions.addPost;
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (userSlice.reducer);
+function fetchPosts() {
+  return /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(dispatch) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              dispatch(getPosts());
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/public/getAllPost")).then(function (response) {
+                dispatch(getPostsSuccess(response.data));
+              })["catch"](function () {
+                dispatch(getPostsFail());
+              });
+
+            case 3:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function (_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+}
+
+/***/ }),
+
 /***/ "./resources/jsf/src/store/slice/userSlice.js":
 /*!****************************************************!*\
   !*** ./resources/jsf/src/store/slice/userSlice.js ***!
@@ -5365,15 +5471,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 /* harmony import */ var _slice_userSlice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slice/userSlice */ "./resources/jsf/src/store/slice/userSlice.js");
+/* harmony import */ var _slice_postSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./slice/postSlice */ "./resources/jsf/src/store/slice/postSlice.js");
 
 
-var rootReducer = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  user: _slice_userSlice__WEBPACK_IMPORTED_MODULE_0__.default
+
+var rootReducer = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  user: _slice_userSlice__WEBPACK_IMPORTED_MODULE_0__.default,
+  posts: _slice_postSlice__WEBPACK_IMPORTED_MODULE_1__.default
 });
-var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.configureStore)({
+var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.configureStore)({
   reducer: rootReducer
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);

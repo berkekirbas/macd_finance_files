@@ -12,11 +12,11 @@ class Post extends Model
     protected $primaryKey = 'post_id';
 
     protected $fillable = [
-        'author_id', 'post_image', 'likes', 'dislikes', 'post_content'
+        'user_id', 'post_image', 'likes', 'dislikes', 'post_content'
     ];
 
     public function user(){
-        return $this->belongsTo('App\Models\User')->select('author_id');
+        return $this->belongsTo('App\Models\User')->select('user_id');
     }
 }
 
