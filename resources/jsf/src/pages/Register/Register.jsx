@@ -33,12 +33,6 @@ const Register = (props) => {
             axios
                 .post(`${BASE_URL}/api/v1/auth/register`, formData)
                 .then(() => {
-                    swal({
-                        title: "Success",
-                        text: `${data.message.success}`,
-                        icon: "success",
-                        button: "Ok",
-                    });
                     history.push("/login");
                 })
                 .catch((error) => error);

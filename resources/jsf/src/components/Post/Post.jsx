@@ -1,105 +1,134 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { fetchPosts, postSelector } from "../../store/slice/postSlice";
+import Loader from "../loader/Loader";
+import { useDispatch, useSelector } from "react-redux";
 
 const Post = () => {
-    return (
-        <div className="post-content">
-            <img
-                src="images/post/default.jpg"
-                alt="post-image"
-                className="img-responsive post-image"
-            />
-            <div className="post-container">
-                <img
-                    src="images/avatar/avatar.png"
-                    alt="user"
-                    className="profile-photo-md pull-left"
-                />
-                <div className="post-detail">
-                    <div className="user-info">
-                        <h5>
-                            <a href="timeline.html" className="profile-link">
-                                Alexis Clark
-                            </a>{" "}
-                            <span className="following">following</span>
-                        </h5>
-                        <p className="text-muted">
-                            Published a photo about 3 mins ago
-                        </p>
-                    </div>
-                    <div className="reaction">
-                        <a className="btn text-green">
-                            <i className="icon ion-thumbsup"></i> 13
-                        </a>
-                        <a className="btn text-red">
-                            <i className="fa fa-thumbs-down"></i> 0
-                        </a>
-                    </div>
-                    <div className="line-divider"></div>
-                    <div className="post-text">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore
-                            eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum.{" "}
-                            <i className="em em-anguished"></i>{" "}
-                            <i className="em em-anguished"></i>{" "}
-                            <i className="em em-anguished"></i>
-                        </p>
-                    </div>
-                    <div className="line-divider"></div>
-                    <div className="post-comment">
+    const dispatch = useDispatch();
+    const { posts, loading, hasErrors } = useSelector(postSelector);
+
+    useEffect(() => {
+        dispatch(fetchPosts());
+    }, [dispatch]);
+
+    const render = () => {
+        if (loading) return <Loader />;
+        if (hasErrors) {
+            return false;
+        }
+
+        return (
+            <div>
+                {posts.map((post) => (
+                    <div key={post.post_id} className="post-content">
                         <img
-                            src="images/avatar/avatar.png"
-                            alt=""
-                            className="profile-photo-sm"
+                            src={`images/posts/${post.post_image}`}
+                            alt="post-image"
+                            className="img-responsive post-image"
                         />
-                        <p>
-                            <a href="timeline.html" className="profile-link">
-                                Diana{" "}
-                            </a>
-                            <i className="em em-laughing"></i> Lorem ipsum dolor
-                            sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam, quis nostrud{" "}
-                        </p>
+                        <div key={post.post_id} className="post-container">
+                            <img
+                                src={`images/avatar/${post.user.avatar}`}
+                                alt="user"
+                                className="profile-photo-md pull-left"
+                            />
+                            <div key={post.post_id} className="post-detail">
+                                <div className="user-info">
+                                    <h5>
+                                        <a href="#" className="profile-link">
+                                            {post.user.name}
+                                        </a>{" "}
+                                        <span className="following">
+                                            Coming Soon
+                                        </span>
+                                    </h5>
+                                    <p className="text-muted">
+                                        {post.created_at}
+                                    </p>
+                                </div>
+                                <div key={post.post_id} className="reaction">
+                                    <a className="btn text-green">
+                                        <i className="icon ion-thumbsup"></i>{" "}
+                                        {post.likes}
+                                    </a>
+                                    <a className="btn text-red">
+                                        <i className="fa fa-thumbs-down"></i>{" "}
+                                        {post.dislikes}
+                                    </a>
+                                </div>
+                                <div className="line-divider"></div>
+                                <div className="post-text">
+                                    <p>
+                                        {post.post_content}
+                                        <i className="em em-anguished"></i>{" "}
+                                        <i className="em em-anguished"></i>{" "}
+                                        <i className="em em-anguished"></i>
+                                    </p>
+                                </div>
+                                <div className="line-divider"></div>
+                                {"Coming Soon "}
+                                {/*<div className="post-comment">
+                                    <img
+                                        src="images/avatar/avatar.png"
+                                        alt=""
+                                        className="profile-photo-sm"
+                                    />
+                                    <p>
+                                        <a
+                                            href="timeline.html"
+                                            className="profile-link"
+                                        >
+                                            Diana{" "}
+                                        </a>
+                                        <i className="em em-laughing"></i> Lorem
+                                        ipsum dolor sit amet, consectetur
+                                        adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis
+                                        nostrud{" "}
+                                    </p>
+                                </div>
+                                <div className="post-comment">
+                                    <img
+                                        src="images/avatar/avatar.png"
+                                        alt=""
+                                        className="profile-photo-sm"
+                                    />
+                                    <p>
+                                        <a
+                                            href="timeline.html"
+                                            className="profile-link"
+                                        >
+                                            John
+                                        </a>{" "}
+                                        Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis
+                                        nostrud{" "}
+                                    </p>
+                                </div>
+                                <div className="post-comment">
+                                    <img
+                                        src="images/avatar/avatar.png"
+                                        alt=""
+                                        className="profile-photo-sm"
+                                    />
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Post a comment"
+                                    />
+                </div>*/}
+                            </div>
+                        </div>
                     </div>
-                    <div className="post-comment">
-                        <img
-                            src="images/avatar/avatar.png"
-                            alt=""
-                            className="profile-photo-sm"
-                        />
-                        <p>
-                            <a href="timeline.html" className="profile-link">
-                                John
-                            </a>{" "}
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud{" "}
-                        </p>
-                    </div>
-                    <div className="post-comment">
-                        <img
-                            src="images/avatar/avatar.png"
-                            alt=""
-                            className="profile-photo-sm"
-                        />
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Post a comment"
-                        />
-                    </div>
-                </div>
+                ))}
             </div>
-        </div>
-    );
+        );
+    };
+
+    return <div>{render()}</div>;
 };
 
 export default Post;

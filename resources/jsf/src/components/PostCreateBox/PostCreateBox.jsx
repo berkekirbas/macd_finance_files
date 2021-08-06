@@ -1,15 +1,34 @@
-import React from "react";
+import axios from "axios";
+import { useState } from "react";
 
 import { useSelector } from "react-redux";
+import { BASE_URL } from "../../Config";
 
 import { userSelector } from "../../store/slice/userSlice";
 
-const PostCreateBox = (props) => {
+const PostCreateBox = () => {
+    const [post_content, setContent] = useState("");
+    const [post_image, setImage] = useState("");
+
     const { user } = useSelector(userSelector);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+
+        formData.append("post_content", post_content);
+        formData.append("post_image", post_image);
+
+        axios
+            .post(`${BASE_URL}/api/v1/auth/sharePost`, formData)
+            .then(() => window.location.reload())
+            .catch((err) => console.log(err));
+    };
 
     return (
         <div className="create-post">
-            <div className="row">
+            <form onSubmit={handleSubmit} className="row">
                 <div className="col-md-7 col-sm-7">
                     <div className="form-group">
                         <img
@@ -25,6 +44,8 @@ const PostCreateBox = (props) => {
                             rows="1"
                             className="form-control"
                             placeholder="Write what you wish"
+                            value={post_content}
+                            onChange={(e) => setContent(e.target.value)}
                         ></textarea>
                     </div>
                 </div>
@@ -32,17 +53,27 @@ const PostCreateBox = (props) => {
                     <div className="tools">
                         <ul className="publishing-tools list-inline">
                             <li>
-                                <a href="#">
-                                    <i className="ion-images"></i>
+                                <a>
+                                    <input
+                                        type="file"
+                                        id="image"
+                                        name="image"
+                                        onChange={(e) =>
+                                            setImage(e.target.files[0])
+                                        }
+                                    />
                                 </a>
                             </li>
                         </ul>
-                        <button className="btn btn-primary pull-right">
+                        <button
+                            type="submit"
+                            className="btn btn-primary pull-right"
+                        >
                             Publish
                         </button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     );
 };
