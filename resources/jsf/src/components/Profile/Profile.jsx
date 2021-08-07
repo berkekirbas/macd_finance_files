@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { USER_TYPE } from "../../Config";
 
 import { userSelector } from "../../store/slice/userSlice";
@@ -32,19 +33,34 @@ const Profile = () => {
                 <li>
                     <i className="icon ion-ios-paper"></i>
                     <div>
-                        <a href="newsfeed.html">Home Page</a>
+                        <Link to="/">Home Page</Link>
+                    </div>
+                </li>
+                <li>
+                    <i className="icon ion-android-contact"></i>
+                    <div>
+                        <Link to="/myprofile">My Profile</Link>
                     </div>
                 </li>
                 <li>
                     <i className="icon ion-ios-people-outline"></i>
                     <div>
-                        <a href="newsfeed-friends.html">Friends</a>
+                        <Link to="/friends">Friends</Link>
                     </div>
                 </li>
                 <li>
                     <i className="icon ion-chatboxes"></i>
                     <div>
-                        <a href="newsfeed-messages.html">Messages</a>
+                        <Link to="/messages">Messages</Link>
+                    </div>
+                </li>
+
+                <li>
+                    <i className="icon ion-ios-paper-outline"></i>
+                    <div>
+                        <button className="btn btn-primary">
+                            Become a trader
+                        </button>
                     </div>
                 </li>
             </ul>

@@ -23,21 +23,22 @@ class RegisterController extends Controller
     public function register(Request $request){
 
         $rules = [
-            'name' => 'required|string',
-            'nickname' => 'required|string',
-            'email' => 'required|string|email|unique:users',
+            'name' => 'required|string|min:3|max:25',
+            'nickname' => 'required|string|min:3|max:25|unique:users',
+            'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gender' => 'required'
+            //'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
 
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            return response()->json(['message' => $validator->errors(), 'code'=>400]);
+            return response()->json(['message' => $validator->errors(), 'code' => 400]);
         }
 
 
-        if ($request->hasFile('avatar'))
+       /* if ($request->hasFile('avatar'))
         {
             $file      = $request->file('avatar');
             $filename  = $file->getClientOriginalName();
@@ -58,10 +59,28 @@ class RegisterController extends Controller
         else
         {
             return response()->json(["message" => "Select image first."]);
+        }*/
+
+        $gender;
+        if($request->gender == "male"){
+            $gender = "male";
+        } else if ($request->gender == 'female') {
+            $gender = "female";
+        } else {
+            return respone()->json(['message' => "There is an error", 'code' => 400]);
         }
     
 
-        
+        $user = new User([
+                'name' => $request->name,
+                'email' => $request->email,
+                'nickname' => $request->nickname,
+                'password' => bcrypt($request->password),
+                'gender' => $gender,
+                'avatar' => $gender == "male" ? "default_male.png" : "default_female.png",
+                'isTrader' => false,
+                'token' => Str::random(60),
+            ]);
 
         $user->save();
 

@@ -14,7 +14,7 @@
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
+/******/ 			// no module.id needed
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
@@ -103,7 +103,7 @@
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_jsf_src_pages_Home_Home_jsx":1,"resources_jsf_src_pages_Login_Login_jsx":1,"resources_jsf_src_pages_Register_Register_jsx":1}[chunkId]) return "jsf/" + chunkId + ".js";
+/******/ 			if ({"resources_jsf_src_pages_Home_Home_jsx":1,"resources_jsf_src_pages_Landing_Landing_jsx":1}[chunkId]) return "jsf/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

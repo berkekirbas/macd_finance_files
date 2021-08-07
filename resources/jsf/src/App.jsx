@@ -1,21 +1,22 @@
 //! Required Imports
 import React, { Suspense } from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 //! Components
 import Spinner from "./components/loader/Loader";
 
 import HomeProtectedRoute from "./utils/protected/HomeProtectedRoute";
-import LoginGuestController from "./utils/guest/LoginGuestController";
-import RegisterGuestController from "./utils/guest/RegisterGuestController";
+import LandingGuestController from "./utils/guest/LandingGuestController";
+
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
     return (
         <Suspense fallback={<Spinner />}>
             <Switch>
                 <HomeProtectedRoute exact path="/" />
-                <LoginGuestController exact path="/login" />
-                <RegisterGuestController exact path="/register" />
+                <LandingGuestController exact path="/landing" />
+                <Route path="*" render={() => <NotFound />} />
             </Switch>
         </Suspense>
     );

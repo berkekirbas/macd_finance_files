@@ -27,7 +27,7 @@ const Home = () => {
         if (loading) return <Loader />;
         if (hasErrors) {
             localStorage.removeItem("auth_control_s2");
-            return <Redirect to="/login" />;
+            return <Redirect to="/landing" />;
         }
 
         return (

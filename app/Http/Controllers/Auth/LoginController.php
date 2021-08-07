@@ -45,8 +45,8 @@ class LoginController extends Controller
             $cookie = $this->getCookieDetails($token);
             return response()
                 ->json([
-                    'user' => $user,
-                    'token' => $token,
+                    'success' => 'User Login was successfully',
+                    'token' => $token
                 ], 200)
                 ->cookie($cookie['name'], $cookie['value'], $cookie['minutes'], $cookie['path'], $cookie['domain'], $cookie['secure'], $cookie['httponly'], $cookie['samesite']);
         } else {

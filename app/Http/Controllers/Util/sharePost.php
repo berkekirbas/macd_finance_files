@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
+
 
 class sharePost extends Controller
 {
@@ -36,10 +38,13 @@ class sharePost extends Controller
             //move image to public/images/posts folder
             $file->move(public_path('images/posts'), $picture);
 
+            $date = Carbon::parse(Carbon::now())->format('Y-m-d H:i');
+
             $post = new Post([
                 'user_id' => Auth::user()->id,
                 'post_content' => $request->post_content,
                 'post_image' => $picture,
+                'created_at' => $date,
             ]);
         } 
         else

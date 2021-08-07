@@ -17,10 +17,11 @@ class CreateUsersTable extends Migration
             $table->id('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('nickname');
+            $table->string('nickname')->unique();
             $table->boolean('phoneNumberVerify')->default(false);
             $table->boolean('active')->default(false);
             $table->string('token')->unique()->nullable();
+            $table->string('gender');
             $table->string('avatar')->default('avatar.png');
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('isTrader')->default(false);

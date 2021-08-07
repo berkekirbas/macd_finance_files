@@ -5131,8 +5131,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _components_loader_Loader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/loader/Loader */ "./resources/jsf/src/components/loader/Loader.jsx");
 /* harmony import */ var _utils_protected_HomeProtectedRoute__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/protected/HomeProtectedRoute */ "./resources/jsf/src/utils/protected/HomeProtectedRoute.jsx");
-/* harmony import */ var _utils_guest_LoginGuestController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/guest/LoginGuestController */ "./resources/jsf/src/utils/guest/LoginGuestController.jsx");
-/* harmony import */ var _utils_guest_RegisterGuestController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/guest/RegisterGuestController */ "./resources/jsf/src/utils/guest/RegisterGuestController.jsx");
+/* harmony import */ var _utils_guest_LandingGuestController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/guest/LandingGuestController */ "./resources/jsf/src/utils/guest/LandingGuestController.jsx");
+/* harmony import */ var _components_NotFound_NotFound__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/NotFound/NotFound */ "./resources/jsf/src/components/NotFound/NotFound.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 //! Required Imports
 
@@ -5152,12 +5152,14 @@ function App() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_utils_protected_HomeProtectedRoute__WEBPACK_IMPORTED_MODULE_2__.default, {
         exact: true,
         path: "/"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_utils_guest_LoginGuestController__WEBPACK_IMPORTED_MODULE_3__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_utils_guest_LandingGuestController__WEBPACK_IMPORTED_MODULE_3__.default, {
         exact: true,
-        path: "/login"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_utils_guest_RegisterGuestController__WEBPACK_IMPORTED_MODULE_4__.default, {
-        exact: true,
-        path: "/register"
+        path: "/landing"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        path: "*",
+        render: function render() {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_NotFound_NotFound__WEBPACK_IMPORTED_MODULE_4__.default, {});
+        }
       })]
     })
   });
@@ -5216,6 +5218,49 @@ react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_App__WEBPACK_IMPORTED_MODULE_2__.default, {})
   })
 }), document.getElementById("root"));
+
+/***/ }),
+
+/***/ "./resources/jsf/src/components/NotFound/NotFound.jsx":
+/*!************************************************************!*\
+  !*** ./resources/jsf/src/components/NotFound/NotFound.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function NotFound() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "error-content",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+        src: "images/404.png",
+        alt: "",
+        className: "img-responsive"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "error-message",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+          className: "error-title",
+          children: "Whoops!"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: "Looks like you are lost. But don't worry there is plenty to see!!"
+        })]
+      })]
+    })
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NotFound);
 
 /***/ }),
 
@@ -5489,10 +5534,10 @@ var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.configureStore)({
 
 /***/ }),
 
-/***/ "./resources/jsf/src/utils/guest/LoginGuestController.jsx":
-/*!****************************************************************!*\
-  !*** ./resources/jsf/src/utils/guest/LoginGuestController.jsx ***!
-  \****************************************************************/
+/***/ "./resources/jsf/src/utils/guest/LandingGuestController.jsx":
+/*!******************************************************************!*\
+  !*** ./resources/jsf/src/utils/guest/LandingGuestController.jsx ***!
+  \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5514,11 +5559,11 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
-var Login = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_jsf_src_pages_Login_Login_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/Login/Login */ "./resources/jsf/src/pages/Login/Login.jsx"));
+var Landing = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_jsf_src_pages_Landing_Landing_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/Landing/Landing */ "./resources/jsf/src/pages/Landing/Landing.jsx"));
 });
 
-var LoginGuestController = function LoginGuestController(_ref) {
+var LandingGuestController = function LandingGuestController(_ref) {
   var restOfProps = _extends({}, _ref);
 
   var authControlS2 = localStorage.getItem("auth_control_s2");
@@ -5526,58 +5571,12 @@ var LoginGuestController = function LoginGuestController(_ref) {
     render: function render(props) {
       return authControlS2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
         to: "/"
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Login, _objectSpread({}, props));
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Landing, _objectSpread({}, props));
     }
   }));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginGuestController);
-
-/***/ }),
-
-/***/ "./resources/jsf/src/utils/guest/RegisterGuestController.jsx":
-/*!*******************************************************************!*\
-  !*** ./resources/jsf/src/utils/guest/RegisterGuestController.jsx ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-
-
-
-var Register = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_jsf_src_pages_Register_Register_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/Register/Register */ "./resources/jsf/src/pages/Register/Register.jsx"));
-});
-
-var RegisterGuestController = function RegisterGuestController(_ref) {
-  var restOfProps = _extends({}, _ref);
-
-  var authControlS2 = localStorage.getItem("auth_control_s2");
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, _objectSpread(_objectSpread({}, restOfProps), {}, {
-    render: function render(props) {
-      return authControlS2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
-        to: "/"
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Register, _objectSpread({}, props));
-    }
-  }));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RegisterGuestController);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LandingGuestController);
 
 /***/ }),
 
@@ -5617,7 +5616,7 @@ var HomeProtectedRoute = function HomeProtectedRoute(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, _objectSpread(_objectSpread({}, restOfProps), {}, {
     render: function render(props) {
       return authControlS2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Home, _objectSpread({}, props)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
-        to: "/login"
+        to: "/landing"
       });
     }
   }));

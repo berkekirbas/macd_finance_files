@@ -56,6 +56,7 @@ const PostCreateBox = () => {
                                 <a>
                                     <input
                                         type="file"
+                                        class="form-control"
                                         id="image"
                                         name="image"
                                         onChange={(e) =>

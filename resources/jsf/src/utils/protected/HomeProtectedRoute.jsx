@@ -9,7 +9,7 @@ const HomeProtectedRoute = ({ ...restOfProps }) => {
         <Route
             {...restOfProps}
             render={(props) =>
-                authControlS2 ? <Home {...props} /> : <Redirect to="/login" />
+                authControlS2 ? <Home {...props} /> : <Redirect to="/landing" />
             }
         />
     );

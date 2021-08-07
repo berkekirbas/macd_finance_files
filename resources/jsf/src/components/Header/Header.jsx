@@ -15,11 +15,11 @@ const Header = () => {
             })
             .then(() => {
                 localStorage.removeItem("auth_control_s2");
-                history.push("/login");
+                history.push("/landing");
             })
             .catch((err) => {
                 localStorage.removeItem("auth_control_s2");
-                history.push("/login");
+                history.push("/landing");
             });
     };
 
@@ -71,6 +71,9 @@ const Header = () => {
                                         <Link to="/">Home</Link>
                                     </li>
                                     <li>
+                                        <Link to="/myProfile">My Profile</Link>
+                                    </li>
+                                    <li>
                                         <Link to="/friends">My friends</Link>
                                     </li>
                                     <li>
@@ -100,8 +103,13 @@ const Header = () => {
                             </li>
 
                             <li className="dropdown">
-                                <a style={{ color: "#27AAE1" }}>
-                                    <button onClick={signOut}>Sign Out</button>
+                                <a>
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={signOut}
+                                    >
+                                        Sign Out
+                                    </button>
                                 </a>
                             </li>
                         </ul>

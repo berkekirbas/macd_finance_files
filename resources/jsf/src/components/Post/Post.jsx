@@ -14,7 +14,7 @@ const Post = () => {
     const render = () => {
         if (loading) return <Loader />;
         if (hasErrors) {
-            return false;
+            return <div>An error occured</div>;
         }
 
         return (
@@ -39,11 +39,13 @@ const Post = () => {
                                             {post.user.name}
                                         </a>{" "}
                                         <span className="following">
-                                            Coming Soon
+                                            Trader
                                         </span>
                                     </h5>
                                     <p className="text-muted">
-                                        {post.created_at}
+                                        {new Date(
+                                            post.created_at
+                                        ).toUTCString()}
                                     </p>
                                 </div>
                                 <div key={post.post_id} className="reaction">

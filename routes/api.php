@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use App\Models\Post;
-
+use Carbon\Carbon;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,12 +13,12 @@ use App\Models\Post;
 |
 */
 
-// TODO: controller dosyası yap bunun için
 Route::group([
     'prefix' => 'v1/public'
 ], function()
 {
     Route::get('getAllPost', 'App\Http\Controllers\Util\getAllPosts@posts');
+
 });
 
 Route::group([
