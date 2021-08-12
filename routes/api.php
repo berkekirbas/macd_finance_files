@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,7 +19,6 @@ Route::group([
 ], function()
 {
     Route::get('getAllPost', 'App\Http\Controllers\Util\getAllPosts@posts');
-
 });
 
 Route::group([
@@ -36,7 +36,10 @@ Route::group([
 		Route::post('logout', 'App\Http\Controllers\Auth\LogoutController@logout');
 		Route::get('me', 'App\Http\Controllers\Auth\meController@me');
         Route::post('sharePost', 'App\Http\Controllers\Util\sharePost@sharePost');
-	});
+        Route::get('getUserPosts/{id}', 'App\Http\Controllers\Util\getUserPosts@getUserPosts');
+        Route::get('getUserProfileInfo/{slug}', 'App\Http\Controllers\Util\getUserProfileInfo@getUserProfileInfo');
+        Route::post('follow', 'App\Http\Controllers\Util\Follow@Follow')->name('follow');
+    });
 });
 
 Route::group([

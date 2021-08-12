@@ -16,9 +16,6 @@ const userSlice = createSlice({
     name: "posts",
     initialState,
     reducers: {
-        addPost: (state, { payload }) => {
-            state.posts.push({ payload });
-        },
         getPosts: (state) => {
             state.loading = true;
         },
@@ -34,8 +31,7 @@ const userSlice = createSlice({
     },
 });
 
-export const { getPosts, getPostsSuccess, getPostsFail, addPost } =
-    userSlice.actions;
+export const { getPosts, getPostsSuccess, getPostsFail } = userSlice.actions;
 
 export default userSlice.reducer;
 

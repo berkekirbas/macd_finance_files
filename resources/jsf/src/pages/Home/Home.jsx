@@ -17,15 +17,15 @@ import { USER_TYPE } from "../../Config";
 
 const Home = () => {
     const dispatch = useDispatch();
-    const { user, loading, hasErrors } = useSelector(userSelector);
+    const { user, userLoading, userHasErrors } = useSelector(userSelector);
 
     useEffect(() => {
         dispatch(fetchUserInfo());
     }, [dispatch]);
 
     const render = () => {
-        if (loading) return <Loader />;
-        if (hasErrors) {
+        if (userLoading) return <Loader />;
+        if (userHasErrors) {
             localStorage.removeItem("auth_control_s2");
             return <Redirect to="/landing" />;
         }

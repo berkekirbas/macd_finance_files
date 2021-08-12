@@ -40,14 +40,14 @@ const Header = () => {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="index-register.html">
+                        <Link className="navbar-brand" to="/">
                             <img
                                 src="images/logo_with_name.png"
                                 width="168px"
                                 height="30px"
                                 alt="logo"
                             />
-                        </a>
+                        </Link>
                     </div>
 
                     <div
@@ -71,7 +71,7 @@ const Header = () => {
                                         <Link to="/">Home</Link>
                                     </li>
                                     <li>
-                                        <Link to="/myProfile">My Profile</Link>
+                                        <Link to="/me">My Profile</Link>
                                     </li>
                                     <li>
                                         <Link to="/friends">My friends</Link>

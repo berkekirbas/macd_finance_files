@@ -19,7 +19,6 @@ class CreatePosts extends Migration
             $table->integer('likes')->default(0);
             $table->integer('dislikes')->default(0);
             $table->string("post_content");
-            $table->timestamp('post_created_at')->nullable();
 
             $table->unsignedBigInteger("user_id");
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");

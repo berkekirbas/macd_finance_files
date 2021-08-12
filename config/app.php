@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Overtrue\LaravelFollow\FollowServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
         /*

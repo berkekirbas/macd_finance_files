@@ -45,7 +45,7 @@ const Post = () => {
                                     <p className="text-muted">
                                         {new Date(
                                             post.created_at
-                                        ).toUTCString()}
+                                        ).toLocaleString()}
                                     </p>
                                 </div>
                                 <div key={post.post_id} className="reaction">

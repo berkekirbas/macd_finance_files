@@ -18,13 +18,13 @@ const Profile = () => {
                     className="profile-photo"
                 />
                 <h5>
-                    <a href="timeline.html" className="text-white">
+                    <Link to="/me" className="text-white">
                         {user.isTrader === USER_TYPE.TRADER
                             ? `${user.name} - Trader`
                             : `${user.name} - User`}
-                    </a>
+                    </Link>
                 </h5>
-                <a href="#" className="text-white">
+                <a className="text-white">
                     <i className="ion ion-android-person-add"></i>{" "}
                     {user.followers + " followers"}
                 </a>
@@ -39,7 +39,7 @@ const Profile = () => {
                 <li>
                     <i className="icon ion-android-contact"></i>
                     <div>
-                        <Link to="/myprofile">My Profile</Link>
+                        <Link to="/me">My Profile</Link>
                     </div>
                 </li>
                 <li>

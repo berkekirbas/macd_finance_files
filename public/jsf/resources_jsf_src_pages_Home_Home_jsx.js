@@ -65,9 +65,9 @@ var Header = function Header() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               className: "icon-bar"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
             className: "navbar-brand",
-            href: "index-register.html",
+            to: "/",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
               src: "images/logo_with_name.png",
               width: "168px",
@@ -99,7 +99,7 @@ var Header = function Header() {
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
-                    to: "/myProfile",
+                    to: "/me",
                     children: "My Profile"
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
@@ -269,7 +269,7 @@ var PostCreateBox = function PostCreateBox() {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
                   type: "file",
-                  "class": "form-control",
+                  className: "form-control",
                   id: "image",
                   name: "image",
                   onChange: function onChange(e) {
@@ -366,7 +366,7 @@ var Post = function Post() {
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
                   className: "text-muted",
-                  children: new Date(post.created_at).toUTCString()
+                  children: new Date(post.created_at).toLocaleString()
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "reaction",
@@ -451,13 +451,12 @@ var Profile = function Profile() {
         alt: "user",
         className: "profile-photo"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h5", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-          href: "timeline.html",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+          to: "/me",
           className: "text-white",
           children: user.isTrader === _Config__WEBPACK_IMPORTED_MODULE_2__.USER_TYPE.TRADER ? "".concat(user.name, " - Trader") : "".concat(user.name, " - User")
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
-        href: "#",
         className: "text-white",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
           className: "ion ion-android-person-add"
@@ -479,7 +478,7 @@ var Profile = function Profile() {
           className: "icon ion-android-contact"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
-            to: "/myprofile",
+            to: "/me",
             children: "My Profile"
           })
         })]
@@ -689,17 +688,17 @@ var Home = function Home() {
 
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_7__.useSelector)(_store_slice_userSlice__WEBPACK_IMPORTED_MODULE_8__.userSelector),
       user = _useSelector.user,
-      loading = _useSelector.loading,
-      hasErrors = _useSelector.hasErrors;
+      userLoading = _useSelector.userLoading,
+      userHasErrors = _useSelector.userHasErrors;
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_store_slice_userSlice__WEBPACK_IMPORTED_MODULE_8__.fetchUserInfo)());
   }, [dispatch]);
 
   var render = function render() {
-    if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_loader_Loader__WEBPACK_IMPORTED_MODULE_6__.default, {});
+    if (userLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_loader_Loader__WEBPACK_IMPORTED_MODULE_6__.default, {});
 
-    if (hasErrors) {
+    if (userHasErrors) {
       localStorage.removeItem("auth_control_s2");
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Redirect, {
         to: "/landing"
