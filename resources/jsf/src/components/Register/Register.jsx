@@ -5,32 +5,45 @@ import { BASE_URL } from "../../Config";
 
 import LoaderForm from "../LoaderForm/LoaderForm";
 
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object({
+    name: Yup.string()
+        .required("Required Field")
+        .min(3, "Minimum 3 Character")
+        .max(25, "Maximum 25 Character"),
+    nickname: Yup.string()
+        .required("Required Field")
+        .min(3, "Minimum 3 Character")
+        .max(25, "Maximum 25 Character"),
+    email: Yup.string()
+        .email("Invalid Mail Adress")
+        .required("Required Field")
+        .min(3, "Minimum 3 Character")
+        .max(191, "Maximum 191 Character"),
+    password: Yup.string()
+        .required("Required Filed")
+        .min(3, "Minimum 3 Character")
+        .max(191, "Maximum 191 Character"),
+    password_confirmation: Yup.string().oneOf(
+        [Yup.ref("password"), null],
+        "Passwords must be match"
+    ),
+});
+
 function Register(props) {
     const [userGender, setGender] = useState("male");
-    const [registerState, setRegisterState] = useState({
-        name: "",
-        email: "",
-        nickname: "",
-        password: "",
-        password_confirmation: "",
-    });
     const [loading, setLoading] = useState(false);
 
-    //! Gender Changer Function
+    const [mailError, setMailError] = useState(null);
+    const [nicknameError, setNicknameError] = useState(null);
+
     const handleOptionChange = (changeEvent) => {
         setGender(changeEvent.target.value);
     };
 
-    //! registerState handler
-    const handleChange = (e) => {
-        const { id, value } = e.target;
-        setRegisterState((prevState) => ({
-            ...prevState,
-            [id]: value,
-        }));
-    };
-
-    //! Submit handler
+    /*//! Submit handler
     const handleSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
@@ -50,15 +63,84 @@ function Register(props) {
                     withCredentials: true,
                 })
                 .then((response) => {
+                    if (response.data.code === 400) {
+                        console.log(response.data.message.email[0]);
+                        console.log(response.data.message.nickname[0]);
+                        return;
+                    }
                     setRegisterState({});
                     setLoading(false);
                     props.changer();
                 })
-                .catch((err) => console.error(err));
+                .catch((err) => {
+                    console.error(err);
+                });
         } else {
+            setErrors((prevState) => ({
+                ...prevState,
+                passwordError: "Passwords must be matched",
+            }));
+            console.log(errors);
             setLoading(false);
         }
+    };*/
+
+    const setNicknameErr = () => {
+        setNicknameError(null);
     };
+    const setMailErr = () => {
+        setMailError(null);
+    };
+
+    const { handleSubmit, handleChange, values, errors } = useFormik({
+        initialValues: {
+            name: "",
+            nickname: "",
+            email: "",
+            password: "",
+            password_confirmation: "",
+        },
+        validationSchema,
+        onSubmit: (values) => {
+            setLoading(true);
+            setMailError(null);
+            setNicknameError(null);
+            const data = {
+                name: values.name,
+                nickname: values.nickname,
+                email: values.email,
+                password: values.password,
+                password_confirmation: values.password_confirmation,
+                gender: userGender,
+            };
+
+            axios
+                .post(`${BASE_URL}/api/v1/auth/register`, data, {
+                    withCredentials: true,
+                })
+                .then((response) => {
+                    if (response.data.code !== 400) {
+                        setLoading(false);
+                        props.changer();
+                    } else {
+                        if (response.data.message.email[0]) {
+                            setMailError(response.data.message.email[0]);
+                            setLoading(false);
+                        }
+                        if (response.data.message.nickname[0]) {
+                            setNicknameError(response.data.message.nickname[0]);
+                            setLoading(false);
+                        }
+                        return;
+                    }
+                })
+                .catch(() =>
+                    console.log(
+                        "If you see this message, Please Contact with us"
+                    )
+                );
+        },
+    });
 
     return (
         <>
@@ -73,7 +155,7 @@ function Register(props) {
                     }
                     id="register"
                 >
-                    <h3>Register Now !!!</h3>
+                    <h3>Register Now</h3>
                     <p className="text-muted">
                         Be cool and join today. Meet millions
                     </p>
@@ -85,7 +167,7 @@ function Register(props) {
                         className="form-inline"
                     >
                         <div className="row">
-                            <div className="form-group col-xs-6">
+                            <div className="form-group col-xs-12">
                                 <label htmlFor="firstname" className="sr-only">
                                     Name
                                 </label>
@@ -96,12 +178,18 @@ function Register(props) {
                                     name="name"
                                     title="Enter name"
                                     placeholder="Name"
-                                    value={registerState.name}
+                                    value={values.name}
                                     onChange={handleChange}
                                     required
                                 />
+                                <span className="text-danger">
+                                    {errors.name ? errors.name : null}
+                                </span>
                             </div>
-                            <div className="form-group col-xs-6">
+                        </div>
+
+                        <div className="row">
+                            <div className="form-group col-xs-12">
                                 <label htmlFor="lastname" className="sr-only">
                                     Nickname
                                 </label>
@@ -112,10 +200,16 @@ function Register(props) {
                                     name="nickname"
                                     title="Enter Nickname"
                                     placeholder="Nickname"
-                                    value={registerState.nickname}
+                                    value={values.nickname}
                                     onChange={handleChange}
+                                    onKeyUp={setNicknameErr}
                                     required
                                 />
+                                <span className="text-danger">
+                                    {errors.nickname ? errors.nickname : null}
+                                    {nicknameError ? <br /> : null}
+                                    {nicknameError ? nicknameError : null}
+                                </span>
                             </div>
                         </div>
                         <div className="row">
@@ -127,13 +221,19 @@ function Register(props) {
                                     id="email"
                                     className="form-control input-group-lg"
                                     type="text"
-                                    name="Email"
+                                    name="email"
                                     title="Enter Email"
                                     placeholder="Your Email"
-                                    value={registerState.email}
+                                    value={values.email}
                                     onChange={handleChange}
+                                    onKeyUp={setMailErr}
                                     required
                                 />
+                                <span className="text-danger">
+                                    {errors.email ? errors.email : null}
+                                    {mailError ? <br /> : null}
+                                    {mailError ? mailError : null}
+                                </span>
                             </div>
                         </div>
                         <div className="row">
@@ -148,10 +248,13 @@ function Register(props) {
                                     name="password"
                                     title="Enter password"
                                     placeholder="Password"
-                                    value={registerState.password}
+                                    value={values.password}
                                     onChange={handleChange}
                                     required
                                 />
+                                <span className="text-danger">
+                                    {errors.password ? errors.password : null}
+                                </span>
                             </div>
                         </div>
                         <div className="row">
@@ -166,10 +269,15 @@ function Register(props) {
                                     name="password_confirmation"
                                     title="Enter Password again"
                                     placeholder="Confirm Your Password"
-                                    value={registerState.password_confirmation}
+                                    value={values.password_confirmation}
                                     onChange={handleChange}
                                     required
                                 />
+                                <span className="text-danger">
+                                    {errors.password_confirmation
+                                        ? errors.password_confirmation
+                                        : null}
+                                </span>
                             </div>
                         </div>
                         <div className="form-group gender">
@@ -198,7 +306,9 @@ function Register(props) {
                         </div>
 
                         <p>
-                            <a href="#">Already have an account?</a>
+                            <a onClick={props.changer}>
+                                Already have an account?
+                            </a>
                         </p>
                         <button type="submit" className="btn btn-primary">
                             Register Now

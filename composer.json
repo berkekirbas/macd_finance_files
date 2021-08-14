@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "beyondcode/laravel-comments": "^1.2",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -14,7 +15,8 @@
         "laravel/passport": "^10.1",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "overtrue/laravel-follow": "^3.0"
+        "overtrue/laravel-follow": "^3.0",
+        "qirolab/laravel-reactions": "^2.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

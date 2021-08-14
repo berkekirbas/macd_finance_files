@@ -16,9 +16,9 @@ class CreatePosts extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id("post_id")->unique();
             $table->string("post_image");
-            $table->integer('likes')->default(0);
-            $table->integer('dislikes')->default(0);
             $table->string("post_content");
+
+            $table->unsignedBigInteger('like')->default(0);
 
             $table->unsignedBigInteger("user_id");
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");

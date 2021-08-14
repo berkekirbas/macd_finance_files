@@ -75,10 +75,10 @@ var Header = function Header() {
               alt: "logo"
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "collapse navbar-collapse",
           id: "bs-example-navbar-collapse-1",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
             className: "nav navbar-nav navbar-right main-menu",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
               className: "dropdown",
@@ -143,19 +143,7 @@ var Header = function Header() {
                 })
               })
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
-            className: "navbar-form navbar-right hidden-sm",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-              className: "form-group",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-                className: "icon ion-android-search"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-                type: "text",
-                className: "form-control",
-                placeholder: "Search friends, photos, videos"
-              })]
-            })
-          })]
+          })
         })]
       })
     })
@@ -178,6 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _components_Header_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Header/Header */ "./resources/jsf/src/components/Header/Header.jsx");
 /* harmony import */ var _components_loader_Loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/loader/Loader */ "./resources/jsf/src/components/loader/Loader.jsx");
 /* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Config */ "./resources/jsf/src/Config.js");
@@ -195,11 +184,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var Me = function Me() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
 
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(_store_slice_userSlice__WEBPACK_IMPORTED_MODULE_5__.userSelector),
       user = _useSelector.user,
+      followers = _useSelector.followers,
       userLoading = _useSelector.userLoading,
       userHasErrors = _useSelector.userHasErrors;
 
@@ -244,17 +235,19 @@ var Me = function Me() {
                   className: "col-md-9",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
                     className: "list-inline profile-menu",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-                        href: "timeline.html",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
                         className: "active",
                         children: "Timeline"
-                      })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+                        to: "/me/edit",
+                        children: "Edit Profile"
+                      })]
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
                     className: "follow-me list-inline",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
-                      children: [user.followers, " people following", " ", user.gender === _Config__WEBPACK_IMPORTED_MODULE_3__.GENDER.MALE ? "his" : "her"]
+                      children: [followers, " people following", " ", user.gender === _Config__WEBPACK_IMPORTED_MODULE_3__.GENDER.MALE ? "his" : "her"]
                     })
                   })]
                 })]
@@ -272,18 +265,12 @@ var Me = function Me() {
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                 className: "mobile-menu",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
-                  className: "list-inline",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-                      href: "timline.html",
-                      className: "active",
-                      children: "Timeline"
-                    })
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
-                  className: "btn-primary",
-                  children: "Follow"
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
+                  className: "active",
+                  children: "Timeline"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+                  to: "/me/edit",
+                  children: "Edit Profile"
                 })]
               })]
             })]
@@ -295,7 +282,7 @@ var Me = function Me() {
                 className: "col-md-3"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                 className: "col-md-7",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                children: [user.isTrader === _Config__WEBPACK_IMPORTED_MODULE_3__.USER_TYPE.TRADER ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                   className: "create-post",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                     className: "row",
@@ -337,7 +324,7 @@ var Me = function Me() {
                       })
                     })]
                   })
-                }), userLoading ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(Posts, {
+                }) : null, userLoading ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(Posts, {
                   id: user.id,
                   user: user
                 })]
@@ -369,6 +356,10 @@ var Posts = function Posts(props) {
       dispatch((0,_store_slice_userSlice__WEBPACK_IMPORTED_MODULE_5__.fetchUserPosts)(props.id));
     } else {}
   }, [dispatch]);
+
+  var handleLike = function handleLike(post_id) {
+    dispatch((0,_store_slice_userSlice__WEBPACK_IMPORTED_MODULE_5__.likeUserPost)(post_id));
+  };
 
   var render = function render() {
     if (postsLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_loader_Loader__WEBPACK_IMPORTED_MODULE_2__.default, {});
@@ -415,19 +406,17 @@ var Posts = function Posts(props) {
                   className: "text-muted",
                   children: new Date(post.created_at).toLocaleString()
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                 className: "reaction",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("a", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("a", {
+                  onClick: function onClick() {
+                    return handleLike(post.post_id);
+                  },
                   className: "btn text-green",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
                     className: "icon ion-thumbsup"
-                  }), " ", post.likes]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("a", {
-                  className: "btn text-red",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
-                    className: "fa fa-thumbs-down"
-                  }), " ", post.dislikes]
-                })]
+                  }), " ", post.like]
+                })
               }, post.post_id), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                 className: "line-divider"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {

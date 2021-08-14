@@ -23,8 +23,10 @@ class CreateUsersTable extends Migration
             $table->string('token')->unique()->nullable();
             $table->string('gender');
             $table->string('avatar')->default('avatar.png');
+            $table->unsignedBigInteger('followersCount')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('isTrader')->default(false);
+            $table->boolean('isApplicated')->default(false);
             $table->string('password');
             $table->rememberToken();
             $table->softDeletes();

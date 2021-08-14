@@ -114,6 +114,7 @@ const Header = () => {
                             </li>
                         </ul>
 
+                        {/*
                         <form className="navbar-form navbar-right hidden-sm">
                             <div className="form-group">
                                 <i className="icon ion-android-search"></i>
@@ -124,6 +125,7 @@ const Header = () => {
                                 />
                             </div>
                         </form>
+*/}
                     </div>
                 </div>
             </nav>

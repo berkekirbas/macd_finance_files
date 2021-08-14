@@ -28,12 +28,53 @@ const userSlice = createSlice({
             state.hasErrors = true;
             state.loading = false;
         },
+
+        addLike: (state, { payload }) => {
+            state.posts.map((post) => {
+                if (post.post_id == payload) {
+                    post.like++;
+                }
+            });
+        },
+
+        deleteLike: (state, { payload }) => {
+            state.posts.map((post) => {
+                if (post.post_id == payload) {
+                    post.like--;
+                }
+            });
+        },
     },
 });
 
-export const { getPosts, getPostsSuccess, getPostsFail } = userSlice.actions;
+export const { getPosts, getPostsSuccess, getPostsFail, addLike, deleteLike } =
+    userSlice.actions;
 
 export default userSlice.reducer;
+
+export function likePost(post_id) {
+    return async (dispatch) => {
+        /*
+         * First, We will check user is likes this posts
+         */
+        const data = {
+            post_id: post_id,
+        };
+
+        axios
+            .post(`${BASE_URL}/api/v1/auth/post/like`, data, {
+                withCredentials: true,
+            })
+            .then((response) => {
+                if (response.data.message == "Liked") {
+                    dispatch(addLike(post_id));
+                } else {
+                    dispatch(deleteLike(post_id));
+                }
+            })
+            .catch((err) => console.log(err));
+    };
+}
 
 export function fetchPosts() {
     return async (dispatch) => {

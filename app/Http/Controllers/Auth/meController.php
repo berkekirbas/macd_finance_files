@@ -10,6 +10,7 @@ class meController extends Controller
     public function me() {
 
 		$message['user'] = Auth::user();
+		$message['userFollowersCount'] = Auth::user()->followers->count();
 		$message['success'] = 'Success';
 		return response()->json(['message' => $message, 'code' => 200]);
 	}

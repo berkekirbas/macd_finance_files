@@ -45,13 +45,14 @@ function Login(props) {
                     console.log(response.data.message);
                 } else {
                     localStorage.setItem("auth_control_s2", randomString(50));
-                    setLoading(false);
-                    history.push("/");
+                    setTimeout(() => {
+                        setLoading(false);
+                        history.push("/");
+                    }, 2500);
                 }
             })
             .catch((error) => {
                 setLoading(false);
-                console.log(error);
             });
     };
     return (

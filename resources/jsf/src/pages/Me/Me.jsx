@@ -1,21 +1,25 @@
 import React from "react";
 import { useEffect } from "react";
 
+import { Link } from "react-router-dom";
+
 import Header from "../../components/Header/Header";
 import Loader from "../../components/loader/Loader";
 
-import { GENDER } from "../../Config";
+import { GENDER, USER_TYPE } from "../../Config";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
     userSelector,
     fetchUserInfo,
     fetchUserPosts,
+    likeUserPost,
 } from "../../store/slice/userSlice";
 
 const Me = () => {
     const dispatch = useDispatch();
-    const { user, userLoading, userHasErrors } = useSelector(userSelector);
+    const { user, followers, userLoading, userHasErrors } =
+        useSelector(userSelector);
 
     useEffect(() => {
         dispatch(fetchUserInfo());
@@ -49,18 +53,17 @@ const Me = () => {
                                     <div className="col-md-9">
                                         <ul className="list-inline profile-menu">
                                             <li>
-                                                <a
-                                                    href="timeline.html"
-                                                    className="active"
-                                                >
+                                                <a className="active">
                                                     Timeline
                                                 </a>
+                                                <Link to="/me/edit">
+                                                    Edit Profile
+                                                </Link>
                                             </li>
                                         </ul>
                                         <ul className="follow-me list-inline">
                                             <li>
-                                                {user.followers} people
-                                                following{" "}
+                                                {followers} people following{" "}
                                                 {user.gender === GENDER.MALE
                                                     ? "his"
                                                     : "her"}
@@ -80,19 +83,8 @@ const Me = () => {
                                     <h4>{user.name}</h4>
                                 </div>
                                 <div className="mobile-menu">
-                                    <ul className="list-inline">
-                                        <li>
-                                            <a
-                                                href="timline.html"
-                                                className="active"
-                                            >
-                                                Timeline
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <button className="btn-primary">
-                                        Follow
-                                    </button>
+                                    <a className="active">Timeline</a>
+                                    <Link to="/me/edit">Edit Profile</Link>
                                 </div>
                             </div>
                         </div>
@@ -100,41 +92,43 @@ const Me = () => {
                             <div className="row">
                                 <div className="col-md-3"></div>
                                 <div className="col-md-7">
-                                    <div className="create-post">
-                                        <div className="row">
-                                            <div className="col-md-7 col-sm-7">
-                                                <div className="form-group">
-                                                    <img
-                                                        src={`images/avatar/${user.avatar}`}
-                                                        alt=""
-                                                        className="profile-photo-md"
-                                                    />
-                                                    <textarea
-                                                        name="texts"
-                                                        id="exampleTextarea"
-                                                        cols="30"
-                                                        rows="1"
-                                                        className="form-control"
-                                                        placeholder="Write what you wish"
-                                                    ></textarea>
+                                    {user.isTrader === USER_TYPE.TRADER ? (
+                                        <div className="create-post">
+                                            <div className="row">
+                                                <div className="col-md-7 col-sm-7">
+                                                    <div className="form-group">
+                                                        <img
+                                                            src={`images/avatar/${user.avatar}`}
+                                                            alt=""
+                                                            className="profile-photo-md"
+                                                        />
+                                                        <textarea
+                                                            name="texts"
+                                                            id="exampleTextarea"
+                                                            cols="30"
+                                                            rows="1"
+                                                            className="form-control"
+                                                            placeholder="Write what you wish"
+                                                        ></textarea>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className="col-md-5 col-sm-5">
-                                                <div className="tools">
-                                                    <ul className="publishing-tools list-inline">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i className="ion-images"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                    <button className="btn btn-primary pull-right">
-                                                        Publish
-                                                    </button>
+                                                <div className="col-md-5 col-sm-5">
+                                                    <div className="tools">
+                                                        <ul className="publishing-tools list-inline">
+                                                            <li>
+                                                                <a href="#">
+                                                                    <i className="ion-images"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                        <button className="btn btn-primary pull-right">
+                                                            Publish
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    ) : null}
                                     {userLoading ? null : (
                                         <Posts id={user.id} user={user} />
                                     )}
@@ -163,6 +157,10 @@ const Posts = (props) => {
         } else {
         }
     }, [dispatch]);
+
+    const handleLike = (post_id) => {
+        dispatch(likeUserPost(post_id));
+    };
 
     const render = () => {
         if (postsLoading) return <Loader />;
@@ -209,13 +207,12 @@ const Posts = (props) => {
                                     </p>
                                 </div>
                                 <div key={post.post_id} className="reaction">
-                                    <a className="btn text-green">
+                                    <a
+                                        onClick={() => handleLike(post.post_id)}
+                                        className="btn text-green"
+                                    >
                                         <i className="icon ion-thumbsup"></i>{" "}
-                                        {post.likes}
-                                    </a>
-                                    <a className="btn text-red">
-                                        <i className="fa fa-thumbs-down"></i>{" "}
-                                        {post.dislikes}
+                                        {post.like}
                                     </a>
                                 </div>
                                 <div className="line-divider"></div>

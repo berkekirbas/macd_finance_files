@@ -1,15 +1,32 @@
 import React, { useEffect } from "react";
-import { fetchPosts, postSelector } from "../../store/slice/postSlice";
+import { Link } from "react-router-dom";
+
 import Loader from "../loader/Loader";
+
+import {
+    fetchPosts,
+    postSelector,
+    likePost,
+} from "../../store/slice/postSlice";
+
 import { useDispatch, useSelector } from "react-redux";
+import { userSelector } from "../../store/slice/userSlice";
 
 const Post = () => {
     const dispatch = useDispatch();
+
+    const { user } = useSelector(userSelector);
     const { posts, loading, hasErrors } = useSelector(postSelector);
 
     useEffect(() => {
         dispatch(fetchPosts());
     }, [dispatch]);
+
+    const handleLike = (post_id) => {
+        dispatch(likePost(post_id));
+    };
+
+    const sendComment = () => {};
 
     const render = () => {
         if (loading) return <Loader />;
@@ -35,9 +52,20 @@ const Post = () => {
                             <div key={post.post_id} className="post-detail">
                                 <div className="user-info">
                                     <h5>
-                                        <a href="#" className="profile-link">
-                                            {post.user.name}
-                                        </a>{" "}
+                                        <Link
+                                            to={
+                                                user.nickname ===
+                                                post.user.nickname
+                                                    ? "/me"
+                                                    : `/profile/${post.user.nickname}`
+                                            }
+                                            className="profile-link"
+                                        >
+                                            {user.nickname ===
+                                            post.user.nickname
+                                                ? "Me"
+                                                : post.user.name}
+                                        </Link>{" "}
                                         <span className="following">
                                             Trader
                                         </span>
@@ -49,13 +77,12 @@ const Post = () => {
                                     </p>
                                 </div>
                                 <div key={post.post_id} className="reaction">
-                                    <a className="btn text-green">
+                                    <a
+                                        onClick={() => handleLike(post.post_id)}
+                                        className="btn text-green"
+                                    >
                                         <i className="icon ion-thumbsup"></i>{" "}
-                                        {post.likes}
-                                    </a>
-                                    <a className="btn text-red">
-                                        <i className="fa fa-thumbs-down"></i>{" "}
-                                        {post.dislikes}
+                                        {post.like}
                                     </a>
                                 </div>
                                 <div className="line-divider"></div>
@@ -68,7 +95,26 @@ const Post = () => {
                                     </p>
                                 </div>
                                 <div className="line-divider"></div>
-                                {"Coming Soon "}
+                                <div className="post-comment">
+                                    <img
+                                        src={`images/avatar/${user.avatar}`}
+                                        alt=""
+                                        className="profile-photo-sm"
+                                    />
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Post a comment"
+                                        disabled
+                                    />
+                                    <button
+                                        onClick={sendComment}
+                                        className="btn ml-1 btn-xs btn-primary"
+                                        disabled
+                                    >
+                                        Send
+                                    </button>
+                                </div>
                                 {/*<div className="post-comment">
                                     <img
                                         src="images/avatar/avatar.png"

@@ -9,6 +9,6 @@ class getUserProfileInfo extends Controller
 {
     public function getUserProfileInfo($nickname) {
         $user = User::where('nickname', $nickname)->first();
-        return response()->json($user);
+        return response()->json(['message' => $user, 'isFollowing' => auth()->user()->isFollowing($user->id),'followersCount' => $user->followers->count()]);
     }
 }

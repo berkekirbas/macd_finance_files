@@ -5128,20 +5128,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _components_loader_Loader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/loader/Loader */ "./resources/jsf/src/components/loader/Loader.jsx");
 /* harmony import */ var _components_NotFound_NotFound__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/NotFound/NotFound */ "./resources/jsf/src/components/NotFound/NotFound.jsx");
 /* harmony import */ var _utils_protected_HomeProtectedRoute__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/protected/HomeProtectedRoute */ "./resources/jsf/src/utils/protected/HomeProtectedRoute.jsx");
 /* harmony import */ var _utils_protected_MeProtectedRoute__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/protected/MeProtectedRoute */ "./resources/jsf/src/utils/protected/MeProtectedRoute.jsx");
 /* harmony import */ var _utils_protected_ProfileProtectedRoute__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/protected/ProfileProtectedRoute */ "./resources/jsf/src/utils/protected/ProfileProtectedRoute.jsx");
-/* harmony import */ var _utils_guest_LandingGuestController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/guest/LandingGuestController */ "./resources/jsf/src/utils/guest/LandingGuestController.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _utils_protected_ExploreProtectedRoute__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/protected/ExploreProtectedRoute */ "./resources/jsf/src/utils/protected/ExploreProtectedRoute.jsx");
+/* harmony import */ var _utils_protected_TradersApplicationProtectedRoute__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/protected/TradersApplicationProtectedRoute */ "./resources/jsf/src/utils/protected/TradersApplicationProtectedRoute.jsx");
+/* harmony import */ var _utils_guest_LandingGuestController__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/guest/LandingGuestController */ "./resources/jsf/src/utils/guest/LandingGuestController.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 //! Required Imports
 
  //! Components
 
 
  //! Protected Routes
+
+
 
 
 
@@ -5152,25 +5156,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
-    fallback: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_loader_Loader__WEBPACK_IMPORTED_MODULE_1__.default, {}),
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Switch, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_utils_protected_HomeProtectedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
+    fallback: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_loader_Loader__WEBPACK_IMPORTED_MODULE_1__.default, {}),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Switch, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_utils_protected_HomeProtectedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
         exact: true,
         path: "/"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_utils_protected_MeProtectedRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_utils_protected_ExploreProtectedRoute__WEBPACK_IMPORTED_MODULE_6__.default, {
+        exact: true,
+        path: "/explore"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_utils_protected_MeProtectedRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
         exact: true,
         path: "/me"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_utils_protected_ProfileProtectedRoute__WEBPACK_IMPORTED_MODULE_5__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_utils_protected_ProfileProtectedRoute__WEBPACK_IMPORTED_MODULE_5__.default, {
         exact: true,
         path: "/profile/:nickname"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_utils_guest_LandingGuestController__WEBPACK_IMPORTED_MODULE_6__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_utils_protected_TradersApplicationProtectedRoute__WEBPACK_IMPORTED_MODULE_7__.default, {
+        exact: true,
+        path: "/traders_application"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_utils_guest_LandingGuestController__WEBPACK_IMPORTED_MODULE_8__.default, {
         exact: true,
         path: "/landing"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
         path: "*",
         render: function render() {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_NotFound_NotFound__WEBPACK_IMPORTED_MODULE_2__.default, {});
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_NotFound_NotFound__WEBPACK_IMPORTED_MODULE_2__.default, {});
         }
       })]
     })
@@ -5329,7 +5339,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getPosts": () => (/* binding */ getPosts),
 /* harmony export */   "getPostsSuccess": () => (/* binding */ getPostsSuccess),
 /* harmony export */   "getPostsFail": () => (/* binding */ getPostsFail),
+/* harmony export */   "addLike": () => (/* binding */ addLike),
+/* harmony export */   "deleteLike": () => (/* binding */ deleteLike),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "likePost": () => (/* binding */ likePost),
 /* harmony export */   "fetchPosts": () => (/* binding */ fetchPosts)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
@@ -5374,31 +5387,60 @@ var userSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.createSlice)({
     getPostsFail: function getPostsFail(state) {
       state.hasErrors = true;
       state.loading = false;
+    },
+    addLike: function addLike(state, _ref2) {
+      var payload = _ref2.payload;
+      state.posts.map(function (post) {
+        if (post.post_id == payload) {
+          post.like++;
+        }
+      });
+    },
+    deleteLike: function deleteLike(state, _ref3) {
+      var payload = _ref3.payload;
+      state.posts.map(function (post) {
+        if (post.post_id == payload) {
+          post.like--;
+        }
+      });
     }
   }
 });
 var _userSlice$actions = userSlice.actions,
     getPosts = _userSlice$actions.getPosts,
     getPostsSuccess = _userSlice$actions.getPostsSuccess,
-    getPostsFail = _userSlice$actions.getPostsFail;
+    getPostsFail = _userSlice$actions.getPostsFail,
+    addLike = _userSlice$actions.addLike,
+    deleteLike = _userSlice$actions.deleteLike;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (userSlice.reducer);
-function fetchPosts() {
+function likePost(post_id) {
   return /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(dispatch) {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(dispatch) {
+      var data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              dispatch(getPosts());
-              _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/public/getAllPost")).then(function (response) {
-                dispatch(getPostsSuccess(response.data));
-              })["catch"](function () {
-                dispatch(getPostsFail());
+              /*
+               * First, We will check user is likes this posts
+               */
+              data = {
+                post_id: post_id
+              };
+              axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/post/like"), data, {
+                withCredentials: true
+              }).then(function (response) {
+                if (response.data.message == "Liked") {
+                  dispatch(addLike(post_id));
+                } else {
+                  dispatch(deleteLike(post_id));
+                }
+              })["catch"](function (err) {
+                return console.log(err);
               });
 
-            case 3:
+            case 2:
             case "end":
               return _context.stop();
           }
@@ -5407,7 +5449,35 @@ function fetchPosts() {
     }));
 
     return function (_x) {
-      return _ref2.apply(this, arguments);
+      return _ref4.apply(this, arguments);
+    };
+  }();
+}
+function fetchPosts() {
+  return /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(dispatch) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              dispatch(getPosts());
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/public/getAllPost")).then(function (response) {
+                dispatch(getPostsSuccess(response.data));
+              })["catch"](function () {
+                dispatch(getPostsFail());
+              });
+
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function (_x2) {
+      return _ref5.apply(this, arguments);
     };
   }();
 }
@@ -5427,24 +5497,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getUser": () => (/* binding */ getUser),
 /* harmony export */   "getUserSuccess": () => (/* binding */ getUserSuccess),
 /* harmony export */   "getUserFail": () => (/* binding */ getUserFail),
+/* harmony export */   "getUserFollowers": () => (/* binding */ getUserFollowers),
 /* harmony export */   "getUserPosts": () => (/* binding */ getUserPosts),
 /* harmony export */   "getUserPostsSuccess": () => (/* binding */ getUserPostsSuccess),
 /* harmony export */   "getUserPostsFail": () => (/* binding */ getUserPostsFail),
 /* harmony export */   "getProfileUserInfo": () => (/* binding */ getProfileUserInfo),
 /* harmony export */   "getUserProfileSuccess": () => (/* binding */ getUserProfileSuccess),
 /* harmony export */   "getUserProfileFail": () => (/* binding */ getUserProfileFail),
+/* harmony export */   "getFollowersCount": () => (/* binding */ getFollowersCount),
+/* harmony export */   "isFollowing": () => (/* binding */ isFollowing),
+/* harmony export */   "addNewFollower": () => (/* binding */ addNewFollower),
+/* harmony export */   "removeAFollower": () => (/* binding */ removeAFollower),
+/* harmony export */   "getAllUsers": () => (/* binding */ getAllUsers),
+/* harmony export */   "getAllUsersSuccess": () => (/* binding */ getAllUsersSuccess),
+/* harmony export */   "getAllUsersFail": () => (/* binding */ getAllUsersFail),
+/* harmony export */   "addLike": () => (/* binding */ addLike),
+/* harmony export */   "deleteLike": () => (/* binding */ deleteLike),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "likeUserPost": () => (/* binding */ likeUserPost),
+/* harmony export */   "addFollower": () => (/* binding */ addFollower),
+/* harmony export */   "removeFollower": () => (/* binding */ removeFollower),
+/* harmony export */   "fetchAllUsers": () => (/* binding */ fetchAllUsers),
 /* harmony export */   "fetchProfileUserInfo": () => (/* binding */ fetchProfileUserInfo),
 /* harmony export */   "fetchUserInfo": () => (/* binding */ fetchUserInfo),
+/* harmony export */   "fetchUserInfoForTradersApplication": () => (/* binding */ fetchUserInfoForTradersApplication),
 /* harmony export */   "fetchUserPosts": () => (/* binding */ fetchUserPosts)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Config */ "./resources/jsf/src/Config.js");
-/* harmony import */ var _postSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./postSlice */ "./resources/jsf/src/store/slice/postSlice.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5454,25 +5538,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //! slice oluşturma metodumuz
 
 
-
  // başlangıç state imiz
 
 var initialState = {
   userLoading: false,
   userHasErrors: false,
   user: {},
+  followers: null,
   userPosts: [],
   postsLoading: false,
   postsHasErrors: false,
   userProfile: {},
   userProfileLoading: false,
-  userProfileHasErrors: false
+  userProfileHasErrors: false,
+  followersCount: null,
+  isFollowing: null,
+  allUsers: [],
+  allUsersLoading: false,
+  allUsersHasErrors: false
 };
 var userSelector = function userSelector(state) {
   return state.user;
 }; // güncel değerini almak için
 
-var userSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__.createSlice)({
+var userSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.createSlice)({
   name: "user",
   initialState: initialState,
   reducers: {
@@ -5489,11 +5578,15 @@ var userSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__.createSlice)({
       state.userHasErrors = true;
       state.userLoading = false;
     },
+    getUserFollowers: function getUserFollowers(state, _ref2) {
+      var payload = _ref2.payload;
+      state.followers = payload;
+    },
     getUserPosts: function getUserPosts(state) {
       state.postsLoading = true;
     },
-    getUserPostsSuccess: function getUserPostsSuccess(state, _ref2) {
-      var payload = _ref2.payload;
+    getUserPostsSuccess: function getUserPostsSuccess(state, _ref3) {
+      var payload = _ref3.payload;
       state.userPosts = payload;
       state.postsLoading = false;
       state.postsHasErrors = false;
@@ -5505,8 +5598,8 @@ var userSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__.createSlice)({
     getProfileUserInfo: function getProfileUserInfo(state) {
       state.userProfileLoading = true;
     },
-    getUserProfileSuccess: function getUserProfileSuccess(state, _ref3) {
-      var payload = _ref3.payload;
+    getUserProfileSuccess: function getUserProfileSuccess(state, _ref4) {
+      var payload = _ref4.payload;
       state.userProfile = payload;
       state.userProfileLoading = false;
       state.userProfileHasErrors = false;
@@ -5514,6 +5607,51 @@ var userSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__.createSlice)({
     getUserProfileFail: function getUserProfileFail(state) {
       state.userProfileHasErrors = true;
       state.userProfileLoading = false;
+    },
+    getFollowersCount: function getFollowersCount(state, _ref5) {
+      var payload = _ref5.payload;
+      state.followersCount = payload;
+    },
+    isFollowing: function isFollowing(state, _ref6) {
+      var payload = _ref6.payload;
+      state.isFollowing = payload;
+    },
+    addNewFollower: function addNewFollower(state) {
+      state.followersCount++;
+      state.isFollowing = true;
+    },
+    removeAFollower: function removeAFollower(state) {
+      state.followersCount--;
+      state.isFollowing = false;
+    },
+    getAllUsers: function getAllUsers(state) {
+      state.allUsersLoading = true;
+    },
+    getAllUsersSuccess: function getAllUsersSuccess(state, _ref7) {
+      var payload = _ref7.payload;
+      state.allUsers = payload;
+      state.allUsersLoading = false;
+      state.allUsersHasErrors = false;
+    },
+    getAllUsersFail: function getAllUsersFail(state) {
+      state.allUsersHasErrors = true;
+      state.allUsersLoading = false;
+    },
+    addLike: function addLike(state, _ref8) {
+      var payload = _ref8.payload;
+      state.userPosts.map(function (post) {
+        if (post.post_id == payload) {
+          post.like++;
+        }
+      });
+    },
+    deleteLike: function deleteLike(state, _ref9) {
+      var payload = _ref9.payload;
+      state.userPosts.map(function (post) {
+        if (post.post_id == payload) {
+          post.like--;
+        }
+      });
     }
   }
 });
@@ -5521,36 +5659,51 @@ var _userSlice$actions = userSlice.actions,
     getUser = _userSlice$actions.getUser,
     getUserSuccess = _userSlice$actions.getUserSuccess,
     getUserFail = _userSlice$actions.getUserFail,
+    getUserFollowers = _userSlice$actions.getUserFollowers,
     getUserPosts = _userSlice$actions.getUserPosts,
     getUserPostsSuccess = _userSlice$actions.getUserPostsSuccess,
     getUserPostsFail = _userSlice$actions.getUserPostsFail,
     getProfileUserInfo = _userSlice$actions.getProfileUserInfo,
     getUserProfileSuccess = _userSlice$actions.getUserProfileSuccess,
-    getUserProfileFail = _userSlice$actions.getUserProfileFail;
+    getUserProfileFail = _userSlice$actions.getUserProfileFail,
+    getFollowersCount = _userSlice$actions.getFollowersCount,
+    isFollowing = _userSlice$actions.isFollowing,
+    addNewFollower = _userSlice$actions.addNewFollower,
+    removeAFollower = _userSlice$actions.removeAFollower,
+    getAllUsers = _userSlice$actions.getAllUsers,
+    getAllUsersSuccess = _userSlice$actions.getAllUsersSuccess,
+    getAllUsersFail = _userSlice$actions.getAllUsersFail,
+    addLike = _userSlice$actions.addLike,
+    deleteLike = _userSlice$actions.deleteLike;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (userSlice.reducer);
-function fetchProfileUserInfo(nickname) {
+function likeUserPost(post_id) {
   return /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(dispatch) {
+    var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(dispatch) {
+      var data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              dispatch(getProfileUserInfo());
-              _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/getUserProfileInfo/").concat(nickname), {
+              /*
+               * First, We will check user is likes this posts
+               */
+              data = {
+                post_id: post_id
+              };
+              axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/post/like"), data, {
                 withCredentials: true
               }).then(function (response) {
-                if (response.data.nickname === undefined) {
-                  return dispatch(getUserProfileFail());
+                if (response.data.message == "Liked") {
+                  dispatch(addLike(post_id));
+                } else {
+                  dispatch(deleteLike(post_id));
                 }
-
-                dispatch(getUserProfileSuccess(response.data));
-              })["catch"](function (error) {
-                dispatch(getUserProfileFail());
+              })["catch"](function (err) {
+                return console.log(err);
               });
 
-            case 3:
+            case 2:
             case "end":
               return _context.stop();
           }
@@ -5559,28 +5712,20 @@ function fetchProfileUserInfo(nickname) {
     }));
 
     return function (_x) {
-      return _ref4.apply(this, arguments);
+      return _ref10.apply(this, arguments);
     };
   }();
 }
-function fetchUserInfo() {
+function addFollower() {
   return /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(dispatch) {
+    var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(dispatch) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              dispatch(getUser());
-              _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/me"), {
-                withCredentials: true
-              }).then(function (response) {
-                dispatch(getUserSuccess(response.data.message.user));
-              })["catch"](function () {
-                dispatch(getUserFail());
-              });
+              dispatch(addNewFollower());
 
-            case 3:
+            case 1:
             case "end":
               return _context2.stop();
           }
@@ -5589,19 +5734,169 @@ function fetchUserInfo() {
     }));
 
     return function (_x2) {
-      return _ref5.apply(this, arguments);
+      return _ref11.apply(this, arguments);
+    };
+  }();
+}
+function removeFollower() {
+  return /*#__PURE__*/function () {
+    var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(dispatch) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              dispatch(removeAFollower());
+
+            case 1:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function (_x3) {
+      return _ref12.apply(this, arguments);
+    };
+  }();
+}
+function fetchAllUsers() {
+  return /*#__PURE__*/function () {
+    var _ref13 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(dispatch) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              dispatch(getAllUsers());
+              _context4.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/getAllUsers"), {
+                withCredentials: true
+              }).then(function (response) {
+                dispatch(getAllUsersSuccess(response.data));
+              })["catch"](function (error) {
+                return dispatch(getAllUsersFail());
+              });
+
+            case 3:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function (_x4) {
+      return _ref13.apply(this, arguments);
+    };
+  }();
+}
+function fetchProfileUserInfo(nickname) {
+  return /*#__PURE__*/function () {
+    var _ref14 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(dispatch) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              dispatch(getProfileUserInfo());
+              _context5.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/getUserProfileInfo/").concat(nickname), {
+                withCredentials: true
+              }).then(function (response) {
+                if (response.data.message.nickname === undefined) {
+                  return dispatch(getUserProfileFail());
+                }
+
+                dispatch(getUserProfileSuccess(response.data.message));
+                dispatch(getFollowersCount(response.data.followersCount));
+                dispatch(isFollowing(response.data.isFollowing));
+              })["catch"](function (error) {
+                dispatch(getUserProfileFail());
+              });
+
+            case 3:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }));
+
+    return function (_x5) {
+      return _ref14.apply(this, arguments);
+    };
+  }();
+}
+function fetchUserInfo() {
+  return /*#__PURE__*/function () {
+    var _ref15 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(dispatch) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              dispatch(getUser());
+              _context6.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/me"), {
+                withCredentials: true
+              }).then(function (response) {
+                dispatch(getUserSuccess(response.data.message.user));
+                dispatch(getUserFollowers(response.data.message.userFollowersCount));
+              })["catch"](function () {
+                dispatch(getUserFail());
+              });
+
+            case 3:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    }));
+
+    return function (_x6) {
+      return _ref15.apply(this, arguments);
+    };
+  }();
+}
+function fetchUserInfoForTradersApplication() {
+  return /*#__PURE__*/function () {
+    var _ref16 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(dispatch) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              dispatch(getUser());
+              _context7.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/fetchUserInfoForTradersApplication"), {
+                withCredentials: true
+              }).then(function (response) {
+                dispatch(getUserSuccess(response.data.message.user));
+                dispatch(getUserFollowers(response.data.message.userFollowersCount));
+              })["catch"](function () {
+                dispatch(getUserFail());
+              });
+
+            case 3:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      }, _callee7);
+    }));
+
+    return function (_x7) {
+      return _ref16.apply(this, arguments);
     };
   }();
 }
 function fetchUserPosts(id) {
   return /*#__PURE__*/function () {
-    var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(dispatch) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+    var _ref17 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(dispatch) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
         while (1) {
-          switch (_context3.prev = _context3.next) {
+          switch (_context8.prev = _context8.next) {
             case 0:
               dispatch(getUserPosts());
-              _context3.next = 3;
+              _context8.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_Config__WEBPACK_IMPORTED_MODULE_2__.BASE_URL, "/api/v1/auth/getUserPosts/").concat(id), {
                 withCredentials: true
               }).then(function (response) {
@@ -5612,14 +5907,14 @@ function fetchUserPosts(id) {
 
             case 3:
             case "end":
-              return _context3.stop();
+              return _context8.stop();
           }
         }
-      }, _callee3);
+      }, _callee8);
     }));
 
-    return function (_x3) {
-      return _ref6.apply(this, arguments);
+    return function (_x8) {
+      return _ref17.apply(this, arguments);
     };
   }();
 }
@@ -5698,6 +5993,52 @@ var LandingGuestController = function LandingGuestController(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LandingGuestController);
+
+/***/ }),
+
+/***/ "./resources/jsf/src/utils/protected/ExploreProtectedRoute.jsx":
+/*!*********************************************************************!*\
+  !*** ./resources/jsf/src/utils/protected/ExploreProtectedRoute.jsx ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+var Explore = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_jsf_src_pages_Explore_Explore_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/Explore/Explore.jsx */ "./resources/jsf/src/pages/Explore/Explore.jsx"));
+});
+
+var ExploreProtectedRoute = function ExploreProtectedRoute(_ref) {
+  var restOfProps = _extends({}, _ref);
+
+  var authControlS2 = localStorage.getItem("auth_control_s2");
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, _objectSpread(_objectSpread({}, restOfProps), {}, {
+    render: function render(props) {
+      return authControlS2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Explore, _objectSpread({}, props)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
+        to: "/landing"
+      });
+    }
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExploreProtectedRoute);
 
 /***/ }),
 
@@ -5836,6 +6177,52 @@ var ProfileProtectedRoute = function ProfileProtectedRoute(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProfileProtectedRoute);
+
+/***/ }),
+
+/***/ "./resources/jsf/src/utils/protected/TradersApplicationProtectedRoute.jsx":
+/*!********************************************************************************!*\
+  !*** ./resources/jsf/src/utils/protected/TradersApplicationProtectedRoute.jsx ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+var TradersApplication = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_jsf_src_pages_TradersApplication_TradersApplication_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/TradersApplication/TradersApplication */ "./resources/jsf/src/pages/TradersApplication/TradersApplication.jsx"));
+});
+
+var TradersApplicationProtectedRoute = function TradersApplicationProtectedRoute(_ref) {
+  var restOfProps = _extends({}, _ref);
+
+  var authControlS2 = localStorage.getItem("auth_control_s2");
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, _objectSpread(_objectSpread({}, restOfProps), {}, {
+    render: function render(props) {
+      return authControlS2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(TradersApplication, _objectSpread({}, props)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
+        to: "/landing"
+      });
+    }
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TradersApplicationProtectedRoute);
 
 /***/ }),
 

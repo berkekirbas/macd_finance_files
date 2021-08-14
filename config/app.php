@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Overtrue\LaravelFollow\FollowServiceProvider::class,
+        Qirolab\Laravel\Reactions\ReactionsServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
         /*

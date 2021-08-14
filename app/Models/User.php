@@ -10,11 +10,19 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 use Overtrue\LaravelFollow\Followable;
 
-class User extends Authenticatable
+use Qirolab\Laravel\Reactions\Traits\Reacts;
+use Qirolab\Laravel\Reactions\Contracts\ReactsInterface;
+
+use BeyondCode\Comments\Contracts\Commentator;
+
+
+class User extends Authenticatable implements ReactsInterface, Commentator
 {
-    use HasApiTokens,HasFactory,Followable , Notifiable, SoftDeletes;
+    use Reacts;
+    use Followable,HasApiTokens,HasFactory,Notifiable,SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
@@ -26,12 +34,14 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'nickname',
-        'email',
         'password',
+        'email',
         'active',
         'gender',
         'token',
         'avatar',
+        'isApplicated',
+        'followersCount'
     ];
 
     /**
@@ -40,9 +50,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        
+        'email',
+        'token',
         'updated_at',
         'deleted_at',
+        'email_verified_at',
         'password',
         'remember_token',
     ];
@@ -64,8 +76,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+    
     public function posts(){
         return $this->hasMany('App\Models\Post');
     }
+
+    /**
+     * Check if a comment for a specific model needs to be approved.
+     * @param mixed $model
+     * @return bool
+     */
+    public function needsCommentApproval($model): bool
+    {
+        return false;    
+    }
+
 }

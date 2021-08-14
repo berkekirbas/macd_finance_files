@@ -5,15 +5,20 @@ import Loader from "../../components/loader/Loader";
 
 import { Redirect, useParams } from "react-router-dom";
 
-import { BASE_URL, GENDER } from "../../Config";
+import { BASE_URL, GENDER, USER_TYPE } from "../../Config";
 
 import { useDispatch, useSelector } from "react-redux";
+
 import {
     userSelector,
     fetchUserInfo,
     fetchUserPosts,
     fetchProfileUserInfo,
+    addFollower,
+    removeFollower,
+    likeUserPost,
 } from "../../store/slice/userSlice";
+import axios from "axios";
 
 function Profile() {
     const { nickname } = useParams();
@@ -26,6 +31,8 @@ function Profile() {
         userProfile,
         userProfileLoading,
         userProfileHasErrors,
+        followersCount,
+        isFollowing,
     } = useSelector(userSelector);
 
     useEffect(() => {
@@ -36,6 +43,39 @@ function Profile() {
         dispatch(fetchProfileUserInfo(nickname));
     }, [dispatch]);
 
+    const handleFollow = (e) => {
+        e.preventDefault();
+
+        const data = {
+            user_id: userProfile.id,
+        };
+
+        axios
+            .post(`${BASE_URL}/api/v1/auth/follow`, data, {
+                withCredentials: true,
+            })
+            .then((response) => dispatch(addFollower()))
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const handleUnfollow = (e) => {
+        e.preventDefault();
+
+        const data = {
+            user_id: userProfile.id,
+        };
+
+        axios
+            .post(`${BASE_URL}/api/v1/auth/unfollow`, data, {
+                withCredentials: true,
+            })
+            .then((response) => dispatch(removeFollower()))
+            .catch((err) => {
+                console.log(err);
+            });
+    };
     const render = () => {
         if (userLoading && userProfileLoading) return <Loader />;
 
@@ -75,11 +115,10 @@ function Profile() {
                                                     Timeline
                                                 </a>
                                             </li>
-                                            -
                                         </ul>
                                         <ul className="follow-me list-inline">
                                             <li>
-                                                {userProfile.followers} people
+                                                {followersCount} people
                                                 following{" "}
                                                 {userProfile.gender ===
                                                 GENDER.MALE
@@ -87,8 +126,17 @@ function Profile() {
                                                     : "her"}
                                             </li>
                                             <li>
-                                                <button className="btn-primary">
-                                                    Follow
+                                                <button
+                                                    onClick={
+                                                        isFollowing
+                                                            ? handleUnfollow
+                                                            : handleFollow
+                                                    }
+                                                    className="btn-primary"
+                                                >
+                                                    {isFollowing
+                                                        ? "Unfollow"
+                                                        : "Follow"}
                                                 </button>
                                             </li>
                                         </ul>
@@ -99,14 +147,11 @@ function Profile() {
                             <div className="navbar-mobile hidden-lg hidden-md">
                                 <div className="profile-info">
                                     <img
-                                        src={`${BASE_URL}/images/${userProfile.avatar}`}
+                                        src={`/images/${userProfile.avatar}`}
                                         alt=""
                                         className="img-responsive profile-photo"
                                     />
-                                    <h4>Sarah Cruiz</h4>
-                                    <p className="text-muted">
-                                        Creative Director
-                                    </p>
+                                    <h4>{userProfile.name}</h4>
                                 </div>
                                 <div className="mobile-menu">
                                     <ul className="list-inline">
@@ -114,8 +159,11 @@ function Profile() {
                                             <a className="active">Timeline</a>
                                         </li>
                                     </ul>
-                                    <button className="btn-primary">
-                                        Follow
+                                    <button
+                                        onClick={handleFollow}
+                                        className="btn-primary"
+                                    >
+                                        {isFollowing ? "Unfollow" : "Follow"}
                                     </button>
                                 </div>
                             </div>
@@ -124,9 +172,11 @@ function Profile() {
                             <div className="row">
                                 <div className="col-md-3"></div>
                                 <div className="col-md-7">
-                                    <div className="create-post"></div>
-                                    {userLoading &&
-                                    userProfileLoading ? null : (
+                                    {userProfile.isTrader ===
+                                    USER_TYPE.TRADER ? (
+                                        <div className="create-post"></div>
+                                    ) : null}
+                                    {userProfileLoading ? null : (
                                         <Posts
                                             id={userProfile.id}
                                             user={userProfile}
@@ -157,6 +207,10 @@ const Posts = (props) => {
         } else {
         }
     }, [dispatch]);
+
+    const handleLike = (post_id) => {
+        dispatch(likeUserPost(post_id));
+    };
 
     const render = () => {
         if (postsLoading) return <Loader />;
@@ -203,13 +257,12 @@ const Posts = (props) => {
                                     </p>
                                 </div>
                                 <div key={post.post_id} className="reaction">
-                                    <a className="btn text-green">
+                                    <a
+                                        onClick={() => handleLike(post.post_id)}
+                                        className="btn text-green"
+                                    >
                                         <i className="icon ion-thumbsup"></i>{" "}
-                                        {post.likes}
-                                    </a>
-                                    <a className="btn text-red">
-                                        <i className="fa fa-thumbs-down"></i>{" "}
-                                        {post.dislikes}
+                                        {post.like}
                                     </a>
                                 </div>
                                 <div className="line-divider"></div>
