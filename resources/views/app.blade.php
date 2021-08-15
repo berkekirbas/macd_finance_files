@@ -11,7 +11,7 @@
 
 	<link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/assets/css/ionicons.min.css') }}" rel="stylesheet">
-  <link href="{{asset('/assets/css/font-awesome.min.css')}}" rel="stylesheet" >
+  <link href="{{ asset('/assets/css/font-awesome.min.css')}}" rel="stylesheet" >
 
 	<link href="{{ asset('/assets/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">

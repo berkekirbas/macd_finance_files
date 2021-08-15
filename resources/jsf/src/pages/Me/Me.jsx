@@ -193,10 +193,7 @@ const Posts = (props) => {
                             <div key={post.post_id} className="post-detail">
                                 <div className="user-info">
                                     <h5>
-                                        <a
-                                            href="timeline.html"
-                                            className="profile-link"
-                                        >
+                                        <a href="#" className="profile-link">
                                             {props.user.name}
                                         </a>{" "}
                                     </h5>

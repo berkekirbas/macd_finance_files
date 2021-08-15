@@ -39,6 +39,8 @@ Route::group([
         Route::get('fetchUserInfoForEditing', 'App\Http\Controllers\Util\fetchUserInfoForEditing@fetch');
         Route::get('fetchUserInfoForTradersApplication', 'App\Http\Controllers\Util\fetchUserInfoForTradersApplication@fetch');
         
+        //Route::patch('change_profile_info', 'App\Http\Controllers\Auth\ChangeProfileInfo@Changer');
+
         Route::post('sharePost', 'App\Http\Controllers\Util\sharePost@sharePost'); // Post Sharing
         Route::get('getUserPosts/{id}', 'App\Http\Controllers\Util\getUserPosts@getUserPosts'); // Get User Posts with User ID
         Route::get('getUserProfileInfo/{slug}', 'App\Http\Controllers\Util\getUserProfileInfo@getUserProfileInfo');

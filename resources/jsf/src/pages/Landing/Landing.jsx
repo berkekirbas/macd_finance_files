@@ -19,7 +19,7 @@ const Landing = () => {
             <nav className="navbar navbar-default navbar-fixed-top menu">
                 <div className="container">
                     <div className="navbar-header">
-                        <a className="navbar-brand" href="index-register.html">
+                        <Link className="navbar-brand" to="/landing">
                             <img
                                 loading="eager"
                                 src="images/logo_with_name.png"
@@ -27,7 +27,7 @@ const Landing = () => {
                                 height="30px"
                                 alt="logo"
                             />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </nav>

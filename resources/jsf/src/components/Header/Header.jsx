@@ -77,7 +77,7 @@ const Header = () => {
                                         <Link to="/friends">My friends</Link>
                                     </li>
                                     <li>
-                                        <Link to="/messages">Messages</Link>
+                                        <a>Messages(Coming Soon)</a>
                                     </li>
                                 </ul>
                             </li>
@@ -95,8 +95,8 @@ const Header = () => {
                                 </a>
                                 <ul className="dropdown-menu login">
                                     <li>
-                                        <a href="edit-profile-settings.html">
-                                            Account Settings
+                                        <a href="#">
+                                            Account Settings(Coming Soon)
                                         </a>
                                     </li>
                                 </ul>

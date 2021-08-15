@@ -5,7 +5,9 @@ const TopList = () => {
         <div className="col-md-2 static">
             <div className="suggestions" id="sticky-sidebar">
                 <h4 className="grey">Top 5 Posts</h4>
-                <div className="follow-user">
+                <div className="follow-user">Coming Soon</div>
+                {/**
+                 * <div className="follow-user">
                     <img
                         src="images/avatar/avatar.png"
                         alt=""
@@ -80,6 +82,7 @@ const TopList = () => {
                         </a>
                     </div>
                 </div>
+                 */}
             </div>
         </div>
     );

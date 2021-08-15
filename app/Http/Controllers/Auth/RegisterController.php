@@ -27,7 +27,7 @@ class RegisterController extends Controller
             'nickname' => 'required|string|min:3|max:25|unique:users',
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'gender' => 'required'
+            'gender' => 'required|string'
             //'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
 
@@ -61,13 +61,13 @@ class RegisterController extends Controller
             return response()->json(["message" => "Select image first."]);
         }*/
 
-        $gender;
+        $gender = "";
         if($request->gender == "male"){
             $gender = "male";
         } else if ($request->gender == 'female') {
             $gender = "female";
         } else {
-            return respone()->json(['message' => "There is an error", 'code' => 400]);
+            return response()->json(['message' => "There is an error", 'code' => 400]);
         }
     
 

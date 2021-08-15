@@ -108,9 +108,8 @@ var Header = function Header() {
                     children: "My friends"
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
-                    to: "/messages",
-                    children: "Messages"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+                    children: "Messages(Coming Soon)"
                   })
                 })]
               })]
@@ -128,8 +127,8 @@ var Header = function Header() {
                 className: "dropdown-menu login",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-                    href: "edit-profile-settings.html",
-                    children: "Account Settings"
+                    href: "#",
+                    children: "Account Settings(Coming Soon)"
                   })
                 })
               })]
