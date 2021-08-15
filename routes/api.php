@@ -46,7 +46,7 @@ Route::group([
         Route::get('getUserProfileInfo/{slug}', 'App\Http\Controllers\Util\getUserProfileInfo@getUserProfileInfo');
         
         Route::post('follow', 'App\Http\Controllers\Util\Follow@Follow')->name('follow');
-        Route::post('unfollow', 'App\Http\Controllers\Util\Follow@Unfollow')->name('follow');
+        Route::post('unfollow', 'App\Http\Controllers\Util\Follow@Unfollow')->name('unfollow');
         
         Route::post('post/like', 'App\Http\Controllers\Util\LikeDislike@Like');
 
